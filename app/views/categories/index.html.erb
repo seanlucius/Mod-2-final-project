@@ -3,7 +3,7 @@
 <% @categories.each do |c| %>
   <li>
   <img src=<%= c.image_url %> alt="image" height="100" width="100">
-  <%= c.name %>
+  <%= link_to c.name, c %>
   </li>
 <% end %>
 </ol>

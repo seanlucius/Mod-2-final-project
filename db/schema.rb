@@ -15,15 +15,6 @@ ActiveRecord::Schema.define(version: 20190325165829) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "addresses", force: :cascade do |t|
-    t.string "street"
-    t.string "city"
-    t.string "state"
-    t.string "zip"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "categories", force: :cascade do |t|
     t.string "name"
     t.string "description"
@@ -46,6 +37,10 @@ ActiveRecord::Schema.define(version: 20190325165829) do
 
   create_table "orders", force: :cascade do |t|
     t.decimal "total_price"
+    t.string "street"
+    t.string "city"
+    t.string "state"
+    t.string "zip"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

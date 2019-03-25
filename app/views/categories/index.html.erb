@@ -1,0 +1,9 @@
+<h4>Categories</h4>
+<ol>
+<% @categories.each do |c| %>
+  <li>
+  <img src=<%= c.image_url %> alt="image" height="100" width="100">
+  <%= c.name %>
+  </li>
+<% end %>
+</ol>

@@ -14393,3 +14393,905 @@ Processing by OrdersController#new as HTML
 Completed 200 OK in 61ms (Views: 59.1ms | ActiveRecord: 0.0ms)
 
 
+  [1m[35m (1.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (144.9ms)[0m  [1m[35mDROP DATABASE IF EXISTS "Project_development"[0m
+  [1m[35m (134.8ms)[0m  [1m[35mDROP DATABASE IF EXISTS "Project_test"[0m
+  [1m[35m (5.2ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (3.0ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(1605976831841687025)[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateCategories (20190325163239)
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (4.3ms)[0m  [1m[35mCREATE TABLE "categories" ("id" bigserial primary key, "name" character varying, "description" character varying, "image_url" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20190325163239"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateProducts (20190325163429)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (3.6ms)[0m  [1m[35mCREATE TABLE "products" ("id" bigserial primary key, "name" character varying, "price" decimal, "image_url" character varying, "description" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20190325163429"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateCategoryProducts (20190325164432)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (2.3ms)[0m  [1m[35mCREATE TABLE "category_products" ("id" bigserial primary key, "category_id" integer, "product_id" integer)[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20190325164432"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateOrders (20190325165437)
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (4.3ms)[0m  [1m[35mCREATE TABLE "orders" ("id" bigserial primary key, "total_price" decimal, "street" character varying, "city" character varying, "state" character varying, "zip" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20190325165437"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateOrderProducts (20190325165829)
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (2.8ms)[0m  [1m[35mCREATE TABLE "order_products" ("id" bigserial primary key, "order_id" integer, "product_id" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20190325165829"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateCarts (20190326140706)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (2.7ms)[0m  [1m[35mCREATE TABLE "carts" ("id" bigserial primary key, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20190326140706"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2019-03-26 20:31:45.628013"], ["updated_at", "2019-03-26 20:31:45.628013"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(1605976831841687025)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.8ms)[0m  [1m[32mINSERT INTO "categories" ("name", "description", "image_url", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Speakers"], ["description", "Awesome speakers!"], ["image_url", "https://cdn.shopify.com/s/files/1/0875/3864/products/S5W_BK_grande.png?v=1551827082"], ["created_at", "2019-03-26 20:31:54.176836"], ["updated_at", "2019-03-26 20:31:54.176836"]]
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "categories" ("name", "description", "image_url", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Speakers"], ["description", "Awesome speakers!"], ["image_url", "https://cdn.shopify.com/s/files/1/0875/3864/products/S5W_BK_grande.png?v=1551827082"], ["created_at", "2019-03-26 20:32:44.184757"], ["updated_at", "2019-03-26 20:32:44.184757"]]
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "categories" ("name", "description", "image_url", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Speakers"], ["description", "Awesome speakers!"], ["image_url", "https://cdn.shopify.com/s/files/1/0875/3864/products/S5W_BK_grande.png?v=1551827082"], ["created_at", "2019-03-26 20:34:11.721005"], ["updated_at", "2019-03-26 20:34:11.721005"]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "categories" ("name", "description", "image_url", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Speakers"], ["description", "Awesome speakers!"], ["image_url", "https://cdn.shopify.com/s/files/1/0875/3864/products/S5W_BK_grande.png?v=1551827082"], ["created_at", "2019-03-26 20:41:36.105102"], ["updated_at", "2019-03-26 20:41:36.105102"]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "categories" ("name", "description", "image_url", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Speakers"], ["description", "Awesome speakers!"], ["image_url", "https://cdn.shopify.com/s/files/1/0875/3864/products/S5W_BK_grande.png?v=1551827082"], ["created_at", "2019-03-26 20:42:31.457679"], ["updated_at", "2019-03-26 20:42:31.457679"]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "categories" ("name", "description", "image_url", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Speakers"], ["description", "Awesome speakers!"], ["image_url", "https://cdn.shopify.com/s/files/1/0875/3864/products/S5W_BK_grande.png?v=1551827082"], ["created_at", "2019-03-26 20:43:58.445236"], ["updated_at", "2019-03-26 20:43:58.445236"]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "categories" ("name", "description", "image_url", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Speakers"], ["description", "Awesome speakers!"], ["image_url", "https://cdn.shopify.com/s/files/1/0875/3864/products/S5W_BK_grande.png?v=1551827082"], ["created_at", "2019-03-26 20:44:13.802710"], ["updated_at", "2019-03-26 20:44:13.802710"]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+Started GET "/orders/new" for ::1 at 2019-03-26 16:45:14 -0400
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by OrdersController#new as HTML
+  Rendering orders/new.html.erb within layouts/application
+Started GET "/orders/new" for ::1 at 2019-03-26 16:45:15 -0400
+Processing by OrdersController#new as HTML
+  Rendering orders/new.html.erb within layouts/application
+Started GET "/" for ::1 at 2019-03-26 16:45:16 -0400
+  Rendered orders/new.html.erb within layouts/application (1233.4ms)
+  Rendered orders/new.html.erb within layouts/application (1209.3ms)
+Completed 200 OK in 1449ms (Views: 1438.7ms | ActiveRecord: 0.0ms)
+
+
+Completed 200 OK in 1718ms (Views: 1697.6ms | ActiveRecord: 5.4ms)
+
+
+Started GET "/categories" for ::1 at 2019-03-26 16:45:16 -0400
+Processing by CategoriesController#index as HTML
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Users/amethyst/.rvm/gems/ruby-2.6.1/gems/railties-5.1.6.2/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/amethyst/.rvm/gems/ruby-2.6.1/gems/railties-5.1.6.2/lib/rails/templates/rails/welcome/index.html.erb (1.6ms)
+Completed 200 OK in 4ms (Views: 2.7ms | ActiveRecord: 0.0ms)
+
+
+  Rendering categories/index.html.erb within layouts/application
+  [1m[36mCategory Load (0.5ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  Rendered categories/index.html.erb within layouts/application (25.8ms)
+Completed 200 OK in 71ms (Views: 48.9ms | ActiveRecord: 14.4ms)
+
+
+Started GET "/categories" for ::1 at 2019-03-26 16:45:17 -0400
+Processing by CategoriesController#index as HTML
+  Rendering categories/index.html.erb within layouts/application
+  [1m[36mCategory Load (0.6ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  Rendered categories/index.html.erb within layouts/application (1.7ms)
+Completed 200 OK in 32ms (Views: 31.0ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/categories" for ::1 at 2019-03-26 16:45:18 -0400
+Processing by CategoriesController#index as HTML
+  Rendering categories/index.html.erb within layouts/application
+  [1m[36mCategory Load (0.3ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  Rendered categories/index.html.erb within layouts/application (1.8ms)
+Completed 200 OK in 54ms (Views: 52.5ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/categories/1" for ::1 at 2019-03-26 16:45:23 -0400
+Processing by CategoriesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mCategory Load (0.3ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering categories/show.html.erb within layouts/application
+  [1m[36mProduct Load (0.8ms)[0m  [1m[34mSELECT "products".* FROM "products" INNER JOIN "category_products" ON "products"."id" = "category_products"."product_id" WHERE "category_products"."category_id" = $1[0m  [["category_id", 1]]
+  Rendered categories/show.html.erb within layouts/application (35.4ms)
+Completed 200 OK in 75ms (Views: 63.1ms | ActiveRecord: 7.8ms)
+
+
+Started GET "/categories/2" for ::1 at 2019-03-26 16:45:26 -0400
+Processing by CategoriesController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mCategory Load (0.9ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering categories/show.html.erb within layouts/application
+  [1m[36mProduct Load (0.8ms)[0m  [1m[34mSELECT "products".* FROM "products" INNER JOIN "category_products" ON "products"."id" = "category_products"."product_id" WHERE "category_products"."category_id" = $1[0m  [["category_id", 2]]
+  Rendered categories/show.html.erb within layouts/application (5.1ms)
+Completed 200 OK in 70ms (Views: 65.9ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/categories/3" for ::1 at 2019-03-26 16:45:28 -0400
+Processing by CategoriesController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mCategory Load (0.4ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering categories/show.html.erb within layouts/application
+  [1m[36mProduct Load (0.5ms)[0m  [1m[34mSELECT "products".* FROM "products" INNER JOIN "category_products" ON "products"."id" = "category_products"."product_id" WHERE "category_products"."category_id" = $1[0m  [["category_id", 3]]
+  Rendered categories/show.html.erb within layouts/application (2.6ms)
+Completed 200 OK in 57ms (Views: 53.6ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/categories/4" for ::1 at 2019-03-26 16:45:30 -0400
+Processing by CategoriesController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mCategory Load (0.3ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  Rendering categories/show.html.erb within layouts/application
+  [1m[36mProduct Load (0.5ms)[0m  [1m[34mSELECT "products".* FROM "products" INNER JOIN "category_products" ON "products"."id" = "category_products"."product_id" WHERE "category_products"."category_id" = $1[0m  [["category_id", 4]]
+  Rendered categories/show.html.erb within layouts/application (3.5ms)
+Completed 200 OK in 73ms (Views: 70.4ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/categories/6" for ::1 at 2019-03-26 16:45:33 -0400
+Processing by CategoriesController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mCategory Load (0.4ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  Rendering categories/show.html.erb within layouts/application
+  [1m[36mProduct Load (0.5ms)[0m  [1m[34mSELECT "products".* FROM "products" INNER JOIN "category_products" ON "products"."id" = "category_products"."product_id" WHERE "category_products"."category_id" = $1[0m  [["category_id", 6]]
+  Rendered categories/show.html.erb within layouts/application (2.0ms)
+Completed 200 OK in 40ms (Views: 36.9ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/categories/7" for ::1 at 2019-03-26 16:45:35 -0400
+Processing by CategoriesController#show as HTML
+  Parameters: {"id"=>"7"}
+  [1m[36mCategory Load (0.3ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  Rendering categories/show.html.erb within layouts/application
+  [1m[36mProduct Load (0.7ms)[0m  [1m[34mSELECT "products".* FROM "products" INNER JOIN "category_products" ON "products"."id" = "category_products"."product_id" WHERE "category_products"."category_id" = $1[0m  [["category_id", 7]]
+  Rendered categories/show.html.erb within layouts/application (3.0ms)
+Completed 200 OK in 40ms (Views: 37.1ms | ActiveRecord: 1.0ms)
+
+
+  [1m[36mProduct Load (0.4ms)[0m  [1m[34mSELECT  "products".* FROM "products" LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT  "products".* FROM "products" ORDER BY "products"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mCategoryProduct Load (0.5ms)[0m  [1m[34mSELECT  "category_products".* FROM "category_products" LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[36mCategoryProduct Load (0.3ms)[0m  [1m[34mSELECT  "category_products".* FROM "category_products" ORDER BY "category_products"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "categories" ("name", "description", "image_url", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Speakers"], ["description", "Awesome speakers!"], ["image_url", "https://cdn.shopify.com/s/files/1/0875/3864/products/S5W_BK_grande.png?v=1551827082"], ["created_at", "2019-03-26 20:49:28.406063"], ["updated_at", "2019-03-26 20:49:28.406063"]]
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "categories" ("name", "description", "image_url", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Speakers"], ["description", "Awesome speakers!"], ["image_url", "https://cdn.shopify.com/s/files/1/0875/3864/products/S5W_BK_grande.png?v=1551827082"], ["created_at", "2019-03-26 20:52:35.915416"], ["updated_at", "2019-03-26 20:52:35.915416"]]
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (133.3ms)[0m  [1m[35mDROP DATABASE IF EXISTS "Project_development"[0m
+  [1m[35m (134.1ms)[0m  [1m[35mDROP DATABASE IF EXISTS "Project_test"[0m
+  [1m[35m (5.2ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (2.8ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(1605976831841687025)[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateCategories (20190325163239)
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (3.8ms)[0m  [1m[35mCREATE TABLE "categories" ("id" bigserial primary key, "name" character varying, "description" character varying, "image_url" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20190325163239"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateProducts (20190325163429)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (3.4ms)[0m  [1m[35mCREATE TABLE "products" ("id" bigserial primary key, "name" character varying, "price" decimal, "image_url" character varying, "description" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20190325163429"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateCategoryProducts (20190325164432)
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (2.0ms)[0m  [1m[35mCREATE TABLE "category_products" ("id" bigserial primary key, "category_id" integer, "product_id" integer)[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20190325164432"]]
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateOrders (20190325165437)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (3.1ms)[0m  [1m[35mCREATE TABLE "orders" ("id" bigserial primary key, "total_price" decimal, "street" character varying, "city" character varying, "state" character varying, "zip" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20190325165437"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateOrderProducts (20190325165829)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (2.1ms)[0m  [1m[35mCREATE TABLE "order_products" ("id" bigserial primary key, "order_id" integer, "product_id" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20190325165829"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateCarts (20190326140706)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (2.2ms)[0m  [1m[35mCREATE TABLE "carts" ("id" bigserial primary key, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20190326140706"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2019-03-26 20:55:05.420813"], ["updated_at", "2019-03-26 20:55:05.420813"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(1605976831841687025)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (1.0ms)[0m  [1m[32mINSERT INTO "categories" ("name", "description", "image_url", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Speakers"], ["description", "Awesome speakers!"], ["image_url", "https://cdn.shopify.com/s/files/1/0875/3864/products/S5W_BK_grande.png?v=1551827082"], ["created_at", "2019-03-26 20:55:14.300282"], ["updated_at", "2019-03-26 20:55:14.300282"]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+Started GET "/orders/new" for ::1 at 2019-03-26 16:57:31 -0400
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by OrdersController#new as HTML
+  Rendering orders/new.html.erb within layouts/application
+Started GET "/orders/new" for ::1 at 2019-03-26 16:57:32 -0400
+Processing by OrdersController#new as HTML
+  Rendering orders/new.html.erb within layouts/application
+Started GET "/" for ::1 at 2019-03-26 16:57:33 -0400
+  Rendered orders/new.html.erb within layouts/application (1209.1ms)
+  Rendered orders/new.html.erb within layouts/application (1253.7ms)
+Completed 200 OK in 1470ms (Views: 1461.9ms | ActiveRecord: 0.0ms)
+
+
+Completed 200 OK in 1744ms (Views: 1724.0ms | ActiveRecord: 5.6ms)
+
+
+Started GET "/categories" for ::1 at 2019-03-26 16:57:33 -0400
+Processing by CategoriesController#index as HTML
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Users/amethyst/.rvm/gems/ruby-2.6.1/gems/railties-5.1.6.2/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/amethyst/.rvm/gems/ruby-2.6.1/gems/railties-5.1.6.2/lib/rails/templates/rails/welcome/index.html.erb (1.8ms)
+Completed 200 OK in 4ms (Views: 3.3ms | ActiveRecord: 0.0ms)
+
+
+  Rendering categories/index.html.erb within layouts/application
+  [1m[36mCategory Load (0.6ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  Rendered categories/index.html.erb within layouts/application (25.4ms)
+Completed 200 OK in 64ms (Views: 40.9ms | ActiveRecord: 14.7ms)
+
+
+Started GET "/categories" for ::1 at 2019-03-26 16:57:33 -0400
+Processing by CategoriesController#index as HTML
+  Rendering categories/index.html.erb within layouts/application
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  Rendered categories/index.html.erb within layouts/application (1.2ms)
+Completed 200 OK in 33ms (Views: 32.2ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/categories/1" for ::1 at 2019-03-26 16:57:38 -0400
+Processing by CategoriesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mCategory Load (0.4ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering categories/show.html.erb within layouts/application
+  [1m[36mProduct Load (0.8ms)[0m  [1m[34mSELECT "products".* FROM "products" INNER JOIN "category_products" ON "products"."id" = "category_products"."product_id" WHERE "category_products"."category_id" = $1[0m  [["category_id", 1]]
+  Rendered categories/show.html.erb within layouts/application (35.3ms)
+Completed 200 OK in 97ms (Views: 84.7ms | ActiveRecord: 8.1ms)
+
+
+  [1m[36mProduct Load (0.4ms)[0m  [1m[34mSELECT  "products".* FROM "products" ORDER BY "products"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (130.4ms)[0m  [1m[35mDROP DATABASE IF EXISTS "Project_development"[0m
+  [1m[35m (126.8ms)[0m  [1m[35mDROP DATABASE IF EXISTS "Project_test"[0m
+  [1m[35m (4.6ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (2.8ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(1605976831841687025)[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateCategories (20190325163239)
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (3.9ms)[0m  [1m[35mCREATE TABLE "categories" ("id" bigserial primary key, "name" character varying, "description" character varying, "image_url" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20190325163239"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateProducts (20190325163429)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (3.3ms)[0m  [1m[35mCREATE TABLE "products" ("id" bigserial primary key, "name" character varying, "price" decimal, "image_url" character varying, "description" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20190325163429"]]
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateCategoryProducts (20190325164432)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (2.2ms)[0m  [1m[35mCREATE TABLE "category_products" ("id" bigserial primary key, "category_id" integer, "product_id" integer)[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20190325164432"]]
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateOrders (20190325165437)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (3.0ms)[0m  [1m[35mCREATE TABLE "orders" ("id" bigserial primary key, "total_price" decimal, "street" character varying, "city" character varying, "state" character varying, "zip" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20190325165437"]]
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateOrderProducts (20190325165829)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (3.2ms)[0m  [1m[35mCREATE TABLE "order_products" ("id" bigserial primary key, "order_id" integer, "product_id" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20190325165829"]]
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateCarts (20190326140706)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (2.0ms)[0m  [1m[35mCREATE TABLE "carts" ("id" bigserial primary key, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20190326140706"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2019-03-26 20:59:09.691268"], ["updated_at", "2019-03-26 20:59:09.691268"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(1605976831841687025)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.9ms)[0m  [1m[32mINSERT INTO "categories" ("name", "description", "image_url", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Speakers"], ["description", "Awesome speakers!"], ["image_url", "https://cdn.shopify.com/s/files/1/0875/3864/products/S5W_BK_grande.png?v=1551827082"], ["created_at", "2019-03-26 20:59:12.914664"], ["updated_at", "2019-03-26 20:59:12.914664"]]
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (129.9ms)[0m  [1m[35mDROP DATABASE IF EXISTS "Project_development"[0m
+  [1m[35m (126.6ms)[0m  [1m[35mDROP DATABASE IF EXISTS "Project_test"[0m
+  [1m[35m (5.2ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (2.8ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(1605976831841687025)[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateCategories (20190325163239)
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (4.0ms)[0m  [1m[35mCREATE TABLE "categories" ("id" bigserial primary key, "name" character varying, "description" character varying, "image_url" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20190325163239"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateProducts (20190325163429)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (3.2ms)[0m  [1m[35mCREATE TABLE "products" ("id" bigserial primary key, "name" character varying, "price" decimal, "image_url" character varying, "description" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20190325163429"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateCategoryProducts (20190325164432)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (2.0ms)[0m  [1m[35mCREATE TABLE "category_products" ("id" bigserial primary key, "category_id" integer, "product_id" integer)[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20190325164432"]]
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateOrders (20190325165437)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (3.1ms)[0m  [1m[35mCREATE TABLE "orders" ("id" bigserial primary key, "total_price" decimal, "street" character varying, "city" character varying, "state" character varying, "zip" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20190325165437"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateOrderProducts (20190325165829)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (2.7ms)[0m  [1m[35mCREATE TABLE "order_products" ("id" bigserial primary key, "order_id" integer, "product_id" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20190325165829"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateCarts (20190326140706)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (2.1ms)[0m  [1m[35mCREATE TABLE "carts" ("id" bigserial primary key, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20190326140706"]]
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.8ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2019-03-26 21:00:20.123248"], ["updated_at", "2019-03-26 21:00:20.123248"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(1605976831841687025)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.8ms)[0m  [1m[32mINSERT INTO "categories" ("name", "description", "image_url", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Speakers"], ["description", "Awesome speakers!"], ["image_url", "https://cdn.shopify.com/s/files/1/0875/3864/products/S5W_BK_grande.png?v=1551827082"], ["created_at", "2019-03-26 21:00:31.392342"], ["updated_at", "2019-03-26 21:00:31.392342"]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "products" ("name", "price", "image_url", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "TG117 Bluetooth Outdoor Speaker Waterproof Portable Wireless Column Loudspeaker Box Support TF Card FM Radio Aux Input"], ["price", "17.53"], ["image_url", "https://ae01.alicdn.com/kf/HLB1tfgBXIrrK1RjSspaq6AREXXa6/TG117-Bluetooth-Outdoor-Speaker-Waterproof-Portable-Wireless-Column-Loudspeaker-Box-Support-TF-Card-FM-Radio-Aux.jpg_640x640.jpg"], ["description", "None"], ["created_at", "2019-03-26 21:00:32.792517"], ["updated_at", "2019-03-26 21:00:32.792517"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Load (0.4ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "category_products" ("category_id", "product_id") VALUES ($1, $2) RETURNING "id"[0m  [["category_id", 1], ["product_id", 1]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "products" ("name", "price", "image_url", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Sago A9 Bluetooth Speaker Mini Wireless Loudspeaker Crack LED TF USB Subwoofer bluetooth Speakers mp3 stereo audio music player"], ["price", "4.39"], ["image_url", "https://ae01.alicdn.com/kf/HTB1OcngKh1YBuNjy1zcq6zNcXXa6/Sago-A9-Bluetooth-Speaker-Mini-Wireless-Loudspeaker-Crack-LED-TF-USB-Subwoofer-bluetooth-Speakers-mp3-stereo.jpg_640x640.jpg"], ["description", "None"], ["created_at", "2019-03-26 21:00:33.128917"], ["updated_at", "2019-03-26 21:00:33.128917"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "category_products" ("category_id", "product_id") VALUES ($1, $2) RETURNING "id"[0m  [["category_id", 1], ["product_id", 2]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "products" ("name", "price", "image_url", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "T2 Bluetooth Music Bass Speaker Waterproof Portable Outdoor LED Wireless Column Loudspeaker Support TF Card FM Radio Aux Input"], ["price", "21.11"], ["image_url", "https://ae01.alicdn.com/kf/HLB1D2ySXUvrK1RjSszfq6xJNVXaG/T2-Bluetooth-Music-Bass-Speaker-Waterproof-Portable-Outdoor-LED-Wireless-Column-Loudspeaker-Support-TF-Card-FM.jpg_640x640.jpg"], ["description", "None"], ["created_at", "2019-03-26 21:00:34.590468"], ["updated_at", "2019-03-26 21:00:34.590468"]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Load (0.3ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "category_products" ("category_id", "product_id") VALUES ($1, $2) RETURNING "id"[0m  [["category_id", 1], ["product_id", 3]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "products" ("name", "price", "image_url", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Mini Bluetooth Speaker Portable Waterproof Wireless Handsfree Speakers, For Showers, Bathroom, Pool, Car, Beach & Outdo"], ["price", "4.99"], ["image_url", "https://ae01.alicdn.com/kf/HTB1_O4qpYwrBKNjSZPcq6xpapXau/Mini-Bluetooth-Speaker-Portable-Waterproof-Wireless-Handsfree-Speakers-For-Showers-Bathroom-Pool-Car-Beach-Outdo.jpg_640x640.jpg"], ["description", "None"], ["created_at", "2019-03-26 21:00:35.592383"], ["updated_at", "2019-03-26 21:00:35.592383"]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "category_products" ("category_id", "product_id") VALUES ($1, $2) RETURNING "id"[0m  [["category_id", 1], ["product_id", 4]]
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "products" ("name", "price", "image_url", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "New NBY-18 Mini Bluetooth Speaker Portable Wireless Speaker Sound System 3D Stereo Music Surround Support Bluetooth,TF AUX USB"], ["price", "15.84"], ["image_url", "https://ae01.alicdn.com/kf/HTB1XDW2kv6H8KJjSspmq6z2WXXaC/New-NBY-18-Mini-Bluetooth-Speaker-Portable-Wireless-Speaker-Sound-System-3D-Stereo-Music-Surround-Support.jpg_640x640.jpg"], ["description", "None"], ["created_at", "2019-03-26 21:00:37.953257"], ["updated_at", "2019-03-26 21:00:37.953257"]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "category_products" ("category_id", "product_id") VALUES ($1, $2) RETURNING "id"[0m  [["category_id", 1], ["product_id", 5]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "products" ("name", "price", "image_url", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "GETIHU Wireless Portable Bluetooth Speaker Mini LED Music Audio TF USB FM Stereo Sound Speaker For Phone Xiaomi Computer column "], ["price", "4.88"], ["image_url", "https://ae01.alicdn.com/kf/HTB1PoLvXoLrK1Rjy1zbq6AenFXab/GETIHU-Wireless-Portable-Bluetooth-Speaker-Mini-LED-Music-Audio-TF-USB-FM-Stereo-Sound-Speaker-For.jpg_640x640.jpg"], ["description", "None"], ["created_at", "2019-03-26 21:00:38.901283"], ["updated_at", "2019-03-26 21:00:38.901283"]]
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Load (0.3ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "category_products" ("category_id", "product_id") VALUES ($1, $2) RETURNING "id"[0m  [["category_id", 1], ["product_id", 6]]
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "products" ("name", "price", "image_url", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Mini Wireless Bluetooth Speaker Hands Free Waterproof Car Bathroom Office Beach Stereo Subwoofer Music Loudspeaker With Suction "], ["price", "4.75"], ["image_url", "https://ae01.alicdn.com/kf/HLB1D7U8XsfrK1RkSmLyq6xGApXa5/Mini-Wireless-Bluetooth-Speaker-Hands-Free-Waterproof-Car-Bathroom-Office-Beach-Stereo-Subwoofer-Music-Loudspeaker-With.jpg_640x640.jpg"], ["description", "None"], ["created_at", "2019-03-26 21:00:40.649872"], ["updated_at", "2019-03-26 21:00:40.649872"]]
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "category_products" ("category_id", "product_id") VALUES ($1, $2) RETURNING "id"[0m  [["category_id", 1], ["product_id", 7]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "products" ("name", "price", "image_url", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "NEW Seller Recommend Portable Mini Support SD TF Card Micro USB Stereo Super Bass Speaker MP3/4 Music Player FM Radio Display IB"], ["price", "5.25"], ["image_url", "https://ae01.alicdn.com/kf/HTB19y9ymbZnBKNjSZFhq6A.oXXa5/NEW-Seller-Recommend-Portable-Mini-Support-SD-TF-Card-Micro-USB-Stereo-Super-Bass-Speaker-MP3.jpg_640x640.jpg"], ["description", "None"], ["created_at", "2019-03-26 21:00:41.206320"], ["updated_at", "2019-03-26 21:00:41.206320"]]
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "category_products" ("category_id", "product_id") VALUES ($1, $2) RETURNING "id"[0m  [["category_id", 1], ["product_id", 8]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "products" ("name", "price", "image_url", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Mifa Portable Bluetooth speaker Portable Wireless Loudspeaker Sound System 10W stereo Music surround Waterproof Outdoor Speaker"], ["price", "28.13"], ["image_url", "https://ae01.alicdn.com/kf/HTB1yFGfbhOMSKJjSZFlq6xqQFXa0/Mifa-Portable-Bluetooth-speaker-Portable-Wireless-Loudspeaker-Sound-System-10W-stereo-Music-surround-Waterproof-Outdoor-Speaker.jpg_640x640.jpg"], ["description", "None"], ["created_at", "2019-03-26 21:00:42.994559"], ["updated_at", "2019-03-26 21:00:42.994559"]]
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "category_products" ("category_id", "product_id") VALUES ($1, $2) RETURNING "id"[0m  [["category_id", 1], ["product_id", 9]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "products" ("name", "price", "image_url", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Anker SoundCore 2 Portable Bluetooth Wireless Speaker Better Bass 24-Hour Playtime 66ft Bluetooth Range IPX5 Water Resistance"], ["price", "39.43"], ["image_url", "https://ae01.alicdn.com/kf/HTB1MTF3gbsTMeJjSsziq6AdwXXam/Anker-SoundCore-2-Portable-Bluetooth-Wireless-Speaker-Better-Bass-24-Hour-Playtime-66ft-Bluetooth-Range-IPX5.jpg_640x640.jpg"], ["description", "None"], ["created_at", "2019-03-26 21:00:43.293598"], ["updated_at", "2019-03-26 21:00:43.293598"]]
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "category_products" ("category_id", "product_id") VALUES ($1, $2) RETURNING "id"[0m  [["category_id", 1], ["product_id", 10]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "products" ("name", "price", "image_url", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Hot Sale Portable 3.5mm Jack Direct Insert Stereo Mini Speaker MP3 Music Player Amplifier Loudspeaker for Mobile Phone&Tablet PC"], ["price", "1.99"], ["image_url", "https://ae01.alicdn.com/kf/HLB1zQoiairxK1RkHFCcq6AQCVXau/Hot-Sale-Portable-3-5mm-Jack-Direct-Insert-Stereo-Mini-Speaker-MP3-Music-Player-Amplifier-Loudspeaker.jpg_640x640.jpg"], ["description", "None"], ["created_at", "2019-03-26 21:00:43.964613"], ["updated_at", "2019-03-26 21:00:43.964613"]]
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "category_products" ("category_id", "product_id") VALUES ($1, $2) RETURNING "id"[0m  [["category_id", 1], ["product_id", 11]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "products" ("name", "price", "image_url", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Soundking 5 inch active monitor speaker Professional indoor and outdoor performance recording monitor, Support Bluetooth QRP-K09"], ["price", "428.12"], ["image_url", "https://ae01.alicdn.com/kf/HTB11qGZnh1YBuNjy1zcq6zNcXXaI/Soundking-5-inch-active-monitor-speaker-Professional-indoor-and-outdoor-performance-recording-monitor-Support-Bluetooth-QRP.jpg_640x640.jpg"], ["description", "None"], ["created_at", "2019-03-26 21:00:44.558313"], ["updated_at", "2019-03-26 21:00:44.558313"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 12], ["LIMIT", 1]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "category_products" ("category_id", "product_id") VALUES ($1, $2) RETURNING "id"[0m  [["category_id", 1], ["product_id", 12]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "products" ("name", "price", "image_url", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Mini Wireless Bluetooth Speaker Support U Disk TF Card Universal Mobile Phone Music Outdoor Portable Subwoofer For Phone Tablet "], ["price", "3.38"], ["image_url", "https://ae01.alicdn.com/kf/HLB1KXo5aE_rK1Rjy0Fcq6zEvVXaR/Mini-Wireless-Bluetooth-Speaker-Support-U-Disk-TF-Card-Universal-Mobile-Phone-Music-Outdoor-Portable-Subwoofer.jpg_640x640.jpg"], ["description", "None"], ["created_at", "2019-03-26 21:00:45.640919"], ["updated_at", "2019-03-26 21:00:45.640919"]]
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 13], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "category_products" ("category_id", "product_id") VALUES ($1, $2) RETURNING "id"[0m  [["category_id", 1], ["product_id", 13]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "products" ("name", "price", "image_url", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Portable Wireless Bluetooth Speaker With Microphone Radio Music Play Support TF Card Speakers For Cycling Camping dropshipping  "], ["price", "6.13"], ["image_url", "https://ae01.alicdn.com/kf/HTB1oWIyXFzsK1Rjy1Xbq6xOaFXaJ/Portable-Wireless-Bluetooth-Speaker-With-Microphone-Radio-Music-Play-Support-TF-Card-Speakers-For-Cycling-Camping.jpg_640x640.jpg"], ["description", "None"], ["created_at", "2019-03-26 21:00:47.630614"], ["updated_at", "2019-03-26 21:00:47.630614"]]
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "category_products" ("category_id", "product_id") VALUES ($1, $2) RETURNING "id"[0m  [["category_id", 1], ["product_id", 14]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "products" ("name", "price", "image_url", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Mini Wireless Bluetooth Speaker Portable Waterproof Shower Speakers for phone MP3 Bluetooth Receiver Hand Free Car Speaker "], ["price", "8.67"], ["image_url", "https://ae01.alicdn.com/kf/HTB1uJX5cVuWBuNjSszbq6AS7FXaq/Mini-Wireless-Bluetooth-Speaker-Portable-Waterproof-Shower-Speakers-for-phone-MP3-Bluetooth-Receiver-Hand-Free-Car.jpg_640x640.jpg"], ["description", "None"], ["created_at", "2019-03-26 21:00:48.019868"], ["updated_at", "2019-03-26 21:00:48.019868"]]
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "category_products" ("category_id", "product_id") VALUES ($1, $2) RETURNING "id"[0m  [["category_id", 1], ["product_id", 15]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "products" ("name", "price", "image_url", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Tronsmart Element T6 Bluetooth Speaker Column Portable Speaker Subwoofer 25W with 360 Stereo Sound Speakers for computer"], ["price", "51.94"], ["image_url", "https://ae01.alicdn.com/kf/HTB1oX8rasfrK1Rjy1Xdq6yemFXa4/Tronsmart-Element-T6-Bluetooth-Speaker-Column-Portable-Speaker-Subwoofer-25W-with-360-Stereo-Sound-Speakers-for.jpg_640x640.jpg"], ["description", "None"], ["created_at", "2019-03-26 21:00:50.965158"], ["updated_at", "2019-03-26 21:00:50.965158"]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 16], ["LIMIT", 1]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "category_products" ("category_id", "product_id") VALUES ($1, $2) RETURNING "id"[0m  [["category_id", 1], ["product_id", 16]]
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "products" ("name", "price", "image_url", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Portable LED Bluetooth Speaker Waterproof fm radio Wireless boombox Mini Column subwoofer sound Box mp3 USB phone Computer bass"], ["price", "16.93"], ["image_url", "https://ae01.alicdn.com/kf/HTB17B7oaizxK1RjSspjq6AS.pXa9/Portable-LED-Bluetooth-Speaker-Waterproof-fm-radio-Wireless-boombox-Mini-Column-subwoofer-sound-Box-mp3-USB.jpg_640x640.jpg"], ["description", "None"], ["created_at", "2019-03-26 21:00:51.316572"], ["updated_at", "2019-03-26 21:00:51.316572"]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 17], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "category_products" ("category_id", "product_id") VALUES ($1, $2) RETURNING "id"[0m  [["category_id", 1], ["product_id", 17]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "products" ("name", "price", "image_url", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Original T2 Bluetooth Speaker Waterproof Portable Outdoor Wireless Mini Column Box Speaker Support TF card FM Stereo Hi-Fi Boxes"], ["price", "21.2"], ["image_url", "https://ae01.alicdn.com/kf/HTB1l4qBeDlYBeNjSszcq6zwhFXaa/Original-T2-Bluetooth-Speaker-Waterproof-Portable-Outdoor-Wireless-Mini-Column-Box-Speaker-Support-TF-card-FM.jpg_640x640.jpg"], ["description", "None"], ["created_at", "2019-03-26 21:00:51.946023"], ["updated_at", "2019-03-26 21:00:51.946023"]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 18], ["LIMIT", 1]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "category_products" ("category_id", "product_id") VALUES ($1, $2) RETURNING "id"[0m  [["category_id", 1], ["product_id", 18]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "products" ("name", "price", "image_url", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "TOPROAD HIFI Portable wireless Bluetooth Speaker Stereo Soundbar TF FM Radio Music Subwoofer Column Speakers for Computer Phones"], ["price", "14.27"], ["image_url", "https://ae01.alicdn.com/kf/HTB1iyN9c9tYBeNjSspaq6yOOFXau/TOPROAD-HIFI-Portable-wireless-Bluetooth-Speaker-Stereo-Soundbar-TF-FM-Radio-Music-Subwoofer-Column-Speakers-for.jpg_640x640.jpg"], ["description", "None"], ["created_at", "2019-03-26 21:00:52.839045"], ["updated_at", "2019-03-26 21:00:52.839045"]]
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 19], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "category_products" ("category_id", "product_id") VALUES ($1, $2) RETURNING "id"[0m  [["category_id", 1], ["product_id", 19]]
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "products" ("name", "price", "image_url", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "T2 Wireless Best Bluetooth Speaker Waterproof Portable Outdoor Mini Column Box Loudspeaker Speaker Support TF Card FM Radio Aux"], ["price", "20.87"], ["image_url", "https://ae01.alicdn.com/kf/HTB1Y6yUN4YaK1RjSZFnq6y80pXa6/T2-Wireless-Best-Bluetooth-Speaker-Waterproof-Portable-Outdoor-Mini-Column-Box-Loudspeaker-Speaker-Support-TF-Card.jpg_640x640.jpg"], ["description", "None"], ["created_at", "2019-03-26 21:00:53.180966"], ["updated_at", "2019-03-26 21:00:53.180966"]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 20], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "category_products" ("category_id", "product_id") VALUES ($1, $2) RETURNING "id"[0m  [["category_id", 1], ["product_id", 20]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "products" ("name", "price", "image_url", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "GETIHU Portable Mini Bluetooth Speakers Wireless Hands Free LED Speaker TF USB FM Sound Music For iPhone X Samsung Mobile Phone"], ["price", "4.91"], ["image_url", "https://ae01.alicdn.com/kf/HTB1MUzhlf2H8KJjy1zkq6xr7pXaw/GETIHU-Portable-Mini-Bluetooth-Speakers-Wireless-Hands-Free-LED-Speaker-TF-USB-FM-Sound-Music-For.jpg_640x640.jpg"], ["description", "None"], ["created_at", "2019-03-26 21:00:54.901095"], ["updated_at", "2019-03-26 21:00:54.901095"]]
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 21], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "category_products" ("category_id", "product_id") VALUES ($1, $2) RETURNING "id"[0m  [["category_id", 1], ["product_id", 21]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "products" ("name", "price", "image_url", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "3.5mm Car Bluetooth Audio Music Receiver Adapter Auto AUX Streaming A2DP Kit With Micfor Speaker Headphone"], ["price", "1.6"], ["image_url", "https://ae01.alicdn.com/kf/HTB15aq.lv9TBuNjy1zbq6xpepXai/3-5mm-Car-Bluetooth-Audio-Music-Receiver-Adapter-Auto-AUX-Streaming-A2DP-Kit-With-Micfor-Speaker.jpg_640x640.jpg"], ["description", "None"], ["created_at", "2019-03-26 21:00:55.841824"], ["updated_at", "2019-03-26 21:00:55.841824"]]
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 22], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "category_products" ("category_id", "product_id") VALUES ($1, $2) RETURNING "id"[0m  [["category_id", 1], ["product_id", 22]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "products" ("name", "price", "image_url", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Tronsmart Element Mega Bluetooth Speaker Wireless Speaker 3D Digital Sound TWS 40W Output NFC 20m Portable Speaker MicroSD Card"], ["price", "51.01"], ["image_url", "https://ae01.alicdn.com/kf/HTB11.HBX0jvK1RjSspiq6AEqXXaq/Tronsmart-Element-Mega-Bluetooth-Speaker-Wireless-Speaker-3D-Digital-Sound-TWS-40W-Output-NFC-20m-Portable.jpg_640x640.jpg"], ["description", "None"], ["created_at", "2019-03-26 21:00:56.310053"], ["updated_at", "2019-03-26 21:00:56.310053"]]
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 23], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "category_products" ("category_id", "product_id") VALUES ($1, $2) RETURNING "id"[0m  [["category_id", 1], ["product_id", 23]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "products" ("name", "price", "image_url", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "S10 Bluetooth Speaker U Disk TF Card DC 5V Universal Mobile Phone Music Mini Wireless Outdoor Portable Subwoofer"], ["price", "3.4"], ["image_url", "https://ae01.alicdn.com/kf/HLB14kKwXOzxK1RkSnaVq6xn9VXai/S10-Bluetooth-Speaker-U-Disk-TF-Card-DC-5V-Universal-Mobile-Phone-Music-Mini-Wireless-Outdoor.jpg_640x640.jpg"], ["description", "None"], ["created_at", "2019-03-26 21:00:58.017941"], ["updated_at", "2019-03-26 21:00:58.017941"]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 24], ["LIMIT", 1]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "category_products" ("category_id", "product_id") VALUES ($1, $2) RETURNING "id"[0m  [["category_id", 1], ["product_id", 24]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "products" ("name", "price", "image_url", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Mini Wireless Bluetooth Speaker MP3 Music Player with Mic Waterproof Portable Stereo Bluetooth Mushroom Speaker For Phone PC Z2"], ["price", "3.99"], ["image_url", "https://ae01.alicdn.com/kf/HTB1SVkzXo_rK1Rjy0Fcq6zEvVXaM/Mini-Wireless-Bluetooth-Speaker-MP3-Music-Player-with-Mic-Waterproof-Portable-Stereo-Bluetooth-Mushroom-Speaker-For.jpg_640x640.jpg"], ["description", "None"], ["created_at", "2019-03-26 21:00:58.335169"], ["updated_at", "2019-03-26 21:00:58.335169"]]
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 25], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "category_products" ("category_id", "product_id") VALUES ($1, $2) RETURNING "id"[0m  [["category_id", 1], ["product_id", 25]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "products" ("name", "price", "image_url", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Anker SoundCore Pro+ 25W Premium Portable Wireless Bluetooth Speaker with Superior Bass and High Definition Sound with 4 Drivers"], ["price", "89.99"], ["image_url", "https://ae01.alicdn.com/kf/HTB1YQyYXsGg21JjSZFyq6xIZVXaw/Anker-SoundCore-Pro-25W-Premium-Portable-Wireless-Bluetooth-Speaker-with-Superior-Bass-and-High-Definition-Sound.jpg_640x640.jpg"], ["description", "None"], ["created_at", "2019-03-26 21:00:58.642515"], ["updated_at", "2019-03-26 21:00:58.642515"]]
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 26], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "category_products" ("category_id", "product_id") VALUES ($1, $2) RETURNING "id"[0m  [["category_id", 1], ["product_id", 26]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "products" ("name", "price", "image_url", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Aerobull Nano Wireless Speaker Bulldog Bluetooth Speaker Outdoor Portable HIFI Bass Speaker Multipurpose  PC Phone MIC"], ["price", "14.96"], ["image_url", "https://ae01.alicdn.com/kf/HTB1b0P4bcfrK1Rjy0Fmq6xhEXXaZ/Aerobull-Nano-Wireless-Speaker-Bulldog-Bluetooth-Speaker-Outdoor-Portable-HIFI-Bass-Speaker-Multipurpose-PC-Phone-MIC.jpg_640x640.jpg"], ["description", "None"], ["created_at", "2019-03-26 21:01:00.699986"], ["updated_at", "2019-03-26 21:01:00.699986"]]
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 27], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "category_products" ("category_id", "product_id") VALUES ($1, $2) RETURNING "id"[0m  [["category_id", 1], ["product_id", 27]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "products" ("name", "price", "image_url", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "S6 Bluetooth Music Bass Speaker Protable Wireless Outdoor Loudspeaker Stereo Subwoofer Bass Column For Phone PC Support TF Radio"], ["price", "22.72"], ["image_url", "https://ae01.alicdn.com/kf/HLB1ridPM3HqK1RjSZFkq6x.WFXaf/S6-Bluetooth-Music-Bass-Speaker-Protable-Wireless-Outdoor-Loudspeaker-Stereo-Subwoofer-Bass-Column-For-Phone-PC.jpg_640x640.jpg"], ["description", "None"], ["created_at", "2019-03-26 21:01:01.018814"], ["updated_at", "2019-03-26 21:01:01.018814"]]
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 28], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "category_products" ("category_id", "product_id") VALUES ($1, $2) RETURNING "id"[0m  [["category_id", 1], ["product_id", 28]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "products" ("name", "price", "image_url", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Anker Soundcore Flare Portable Bluetooth 360' Speaker with All-Round Sound Enhanced Bass Ambient LED Light IPX7 Waterproof"], ["price", "59.99"], ["image_url", "https://ae01.alicdn.com/kf/HTB1SCJ7MXzqK1RjSZFoq6zfcXXak/Anker-Soundcore-Flare-Portable-Bluetooth-360-Speaker-with-All-Round-Sound-Enhanced-Bass-Ambient-LED-Light.jpg_640x640.jpg"], ["description", "None"], ["created_at", "2019-03-26 21:01:02.987525"], ["updated_at", "2019-03-26 21:01:02.987525"]]
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 29], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "category_products" ("category_id", "product_id") VALUES ($1, $2) RETURNING "id"[0m  [["category_id", 1], ["product_id", 29]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "products" ("name", "price", "image_url", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "kebidu Portable Mini Monaural Speaker Music Stereo Audio Speakers For Smart Moblie Phone MP4 With 3.5mm Plug Loudpeakers"], ["price", "2.34"], ["image_url", "https://ae01.alicdn.com/kf/HTB1xfyQkRnTBKNjSZPfq6zf1XXat/kebidu-Portable-Mini-Monaural-Speaker-Music-Stereo-Audio-Speakers-For-Smart-Moblie-Phone-MP4-With-3.jpg_640x640.jpg"], ["description", "None"], ["created_at", "2019-03-26 21:01:04.141083"], ["updated_at", "2019-03-26 21:01:04.141083"]]
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 30], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "category_products" ("category_id", "product_id") VALUES ($1, $2) RETURNING "id"[0m  [["category_id", 1], ["product_id", 30]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "products" ("name", "price", "image_url", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Mifa i8 Portable Bluetooth Speaker Built-inMicrophone Aluminium Alloy Body Mini Speaker Wireless Bluetooth 4.2 Mp3 Music Player"], ["price", "13.59"], ["image_url", "https://ae01.alicdn.com/kf/HTB1GP5FXizxK1Rjy1zkq6yHrVXaf/Mifa-i8-Portable-Bluetooth-Speaker-Built-inMicrophone-Aluminium-Alloy-Body-Mini-Speaker-Wireless-Bluetooth-4-2.jpg_640x640.jpg"], ["description", "None"], ["created_at", "2019-03-26 21:01:05.727402"], ["updated_at", "2019-03-26 21:01:05.727402"]]
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "category_products" ("category_id", "product_id") VALUES ($1, $2) RETURNING "id"[0m  [["category_id", 1], ["product_id", 31]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "products" ("name", "price", "image_url", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Tronsmart Element Force Bluetooth Speaker IPX7 Waterproof Portable Speaker 40W Computer Speakers 15H Playtime with Subwoofer,NFC"], ["price", "67.33"], ["image_url", "https://ae01.alicdn.com/kf/HTB10.rAX5DxK1Rjy1zcq6yGeXXaF/Tronsmart-Element-Force-Bluetooth-Speaker-IPX7-Waterproof-Portable-Speaker-40W-Computer-Speakers-15H-Playtime-with-Subwoofer.jpg_640x640.jpg"], ["description", "None"], ["created_at", "2019-03-26 21:01:08.075982"], ["updated_at", "2019-03-26 21:01:08.075982"]]
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 32], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "category_products" ("category_id", "product_id") VALUES ($1, $2) RETURNING "id"[0m  [["category_id", 1], ["product_id", 32]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "products" ("name", "price", "image_url", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "MIFA F10 Outdoor Wireless Bluetooth 4.0 Stereo Portable Speaker Built-in mic Shock Resistance IPX6 Waterproof Speaker with Bass"], ["price", "19.79"], ["image_url", "https://ae01.alicdn.com/kf/HTB19SYSPXXXXXXpaFXXq6xXFXXXZ/MIFA-F10-Outdoor-Wireless-Bluetooth-4-0-Stereo-Portable-Speaker-Built-in-mic-Shock-Resistance-IPX6.jpg_640x640.jpg"], ["description", "None"], ["created_at", "2019-03-26 21:01:08.425495"], ["updated_at", "2019-03-26 21:01:08.425495"]]
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 33], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "category_products" ("category_id", "product_id") VALUES ($1, $2) RETURNING "id"[0m  [["category_id", 1], ["product_id", 33]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "products" ("name", "price", "image_url", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Baseus Bluetooth Speaker Mini Portable Outdoor Wireless Speaker 3D stereo Music surround Player altavoz bluetooth haut parleur"], ["price", "20.99"], ["image_url", "https://ae01.alicdn.com/kf/HTB1qMBjMbrpK1RjSZTEq6AWAVXaa/Baseus-Bluetooth-Speaker-Mini-Portable-Outdoor-Wireless-Speaker-3D-stereo-Music-surround-Player-altavoz-bluetooth-haut.jpg_640x640.jpg"], ["description", "None"], ["created_at", "2019-03-26 21:01:10.762085"], ["updated_at", "2019-03-26 21:01:10.762085"]]
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 34], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "category_products" ("category_id", "product_id") VALUES ($1, $2) RETURNING "id"[0m  [["category_id", 1], ["product_id", 34]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "products" ("name", "price", "image_url", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "QCY A10 wireless bluetooth speaker metal mini portable subwoof sound with Mic TF card FM radio AUX MP3 music play loudspeaker"], ["price", "16.45"], ["image_url", "https://ae01.alicdn.com/kf/HTB1hQ27RFXXXXbtXXXXq6xXFXXXq/QCY-A10-wireless-bluetooth-speaker-metal-mini-portable-subwoof-sound-with-Mic-TF-card-FM-radio.jpg_640x640.jpg"], ["description", "None"], ["created_at", "2019-03-26 21:01:12.926473"], ["updated_at", "2019-03-26 21:01:12.926473"]]
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 35], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "category_products" ("category_id", "product_id") VALUES ($1, $2) RETURNING "id"[0m  [["category_id", 1], ["product_id", 35]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "products" ("name", "price", "image_url", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Waterproof Wireless Bluetooth Speaker Portable Outdoor Sport Mini Column Box Stereo Loudspeaker Speaker Design for iPhone Xiaomi"], ["price", "23.87"], ["image_url", "https://ae01.alicdn.com/kf/HLB1q28YM7voK1RjSZFNq6AxMVXaa/Waterproof-Wireless-Bluetooth-Speaker-Portable-Outdoor-Sport-Mini-Column-Box-Stereo-Loudspeaker-Speaker-Design-for-iPhone.jpg_640x640.jpg"], ["description", "None"], ["created_at", "2019-03-26 21:01:13.300654"], ["updated_at", "2019-03-26 21:01:13.300654"]]
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 36], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "category_products" ("category_id", "product_id") VALUES ($1, $2) RETURNING "id"[0m  [["category_id", 1], ["product_id", 36]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "products" ("name", "price", "image_url", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "1Pc AIYIMA 2Inch Resonance Speaker Vibration Strong Bass Louderspeaker All Frequency Horn Speakers 50mm 4 Ohm 25 W"], ["price", "14.97"], ["image_url", "https://ae01.alicdn.com/kf/HTB1_4tfSXXXXXaNXpXXq6xXFXXX1/1Pc-AIYIMA-2Inch-Resonance-Speaker-Vibration-Strong-Bass-Louderspeaker-All-Frequency-Horn-Speakers-50mm-4-Ohm.jpg_640x640.jpg"], ["description", "None"], ["created_at", "2019-03-26 21:01:15.940013"], ["updated_at", "2019-03-26 21:01:15.940013"]]
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 37], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "category_products" ("category_id", "product_id") VALUES ($1, $2) RETURNING "id"[0m  [["category_id", 1], ["product_id", 37]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "products" ("name", "price", "image_url", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Wireless Bluetooth Speaker 10W Waterproof column Stereo Subwoofer loudspeaker portable Speaker+Mic Bass FM Radio MP3 Sound Box"], ["price", "15.95"], ["image_url", "https://ae01.alicdn.com/kf/HTB1O2kWadfvK1RjSspfq6zzXFXaU/Wireless-Bluetooth-Speaker-10W-Waterproof-column-Stereo-Subwoofer-loudspeaker-portable-Speaker-Mic-Bass-FM-Radio-MP3.jpg_640x640.jpg"], ["description", "None"], ["created_at", "2019-03-26 21:01:18.115819"], ["updated_at", "2019-03-26 21:01:18.115819"]]
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 38], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "category_products" ("category_id", "product_id") VALUES ($1, $2) RETURNING "id"[0m  [["category_id", 1], ["product_id", 38]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "products" ("name", "price", "image_url", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "BDF X6 Mini Wireless Bluetooth Speakers Portable Handsfree Speaker Built in MIC Audio Receiver boom box Support TF Card USB "], ["price", "6.98"], ["image_url", "https://ae01.alicdn.com/kf/HTB1rq0wRFXXXXaGaXXXq6xXFXXXV/BDF-X6-Mini-Wireless-Bluetooth-Speakers-Portable-Handsfree-Speaker-Built-in-MIC-Audio-Receiver-boom-box.jpg_640x640.jpg"], ["description", "None"], ["created_at", "2019-03-26 21:01:18.456082"], ["updated_at", "2019-03-26 21:01:18.456082"]]
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 39], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "category_products" ("category_id", "product_id") VALUES ($1, $2) RETURNING "id"[0m  [["category_id", 1], ["product_id", 39]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "products" ("name", "price", "image_url", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Wireless Bluetooth Speaker LED Portable Boom Box Outdoor Bass Column Subwoofer Sound Box  with Mic Support TF FM USB Subwoffer"], ["price", "17.91"], ["image_url", "https://ae01.alicdn.com/kf/HTB1POPFXcnrK1RjSspkq6yuvXXaw/Wireless-Bluetooth-Speaker-LED-Portable-Boom-Box-Outdoor-Bass-Column-Subwoofer-Sound-Box-with-Mic-Support.jpg_640x640.jpg"], ["description", "None"], ["created_at", "2019-03-26 21:01:20.779172"], ["updated_at", "2019-03-26 21:01:20.779172"]]
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 40], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "category_products" ("category_id", "product_id") VALUES ($1, $2) RETURNING "id"[0m  [["category_id", 1], ["product_id", 40]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "products" ("name", "price", "image_url", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Portable 3.5mm Pillow Speaker for MP3 /MP4 /CD /iPod /Phone White mini speaker caixinha de som alto falante 2019"], ["price", "0.98"], ["image_url", "https://ae01.alicdn.com/kf/HTB1J3w1acrrK1Rjy1zeq6xalFXaj/Portable-3-5mm-Pillow-Speaker-for-MP3-MP4-CD-iPod-Phone-White-mini-speaker-caixinha-de.jpg_640x640.jpg"], ["description", "None"], ["created_at", "2019-03-26 21:01:22.968797"], ["updated_at", "2019-03-26 21:01:22.968797"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 41], ["LIMIT", 1]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "category_products" ("category_id", "product_id") VALUES ($1, $2) RETURNING "id"[0m  [["category_id", 1], ["product_id", 41]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "products" ("name", "price", "image_url", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "kebidu Mini USB 2.0 3.5mm Jack Multimedia Desktop Computer Notebook Speaker Music Stereo For Home Theater Party Speaker for PC"], ["price", "4.61"], ["image_url", "https://ae01.alicdn.com/kf/HTB1Jhb5XyzxK1RkSnaVq6xn9VXar/kebidu-Mini-USB-2-0-3-5mm-Jack-Multimedia-Desktop-Computer-Notebook-Speaker-Music-Stereo-For.jpg_640x640.jpg"], ["description", "None"], ["created_at", "2019-03-26 21:01:23.427693"], ["updated_at", "2019-03-26 21:01:23.427693"]]
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 42], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "category_products" ("category_id", "product_id") VALUES ($1, $2) RETURNING "id"[0m  [["category_id", 1], ["product_id", 42]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "products" ("name", "price", "image_url", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "dodocool Loudspeaker Bluetooth Speaker Portable Stereo Handsfree Music Square Box Mini Wireless Speaker for Compute Phone PC"], ["price", "9.99"], ["image_url", "https://ae01.alicdn.com/kf/HTB129Sqae3tHKVjSZSgq6x4QFXaf/dodocool-Loudspeaker-Bluetooth-Speaker-Portable-Stereo-Handsfree-Music-Square-Box-Mini-Wireless-Speaker-for-Compute-Phone.jpg_640x640.jpg"], ["description", "None"], ["created_at", "2019-03-26 21:01:24.056942"], ["updated_at", "2019-03-26 21:01:24.056942"]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 43], ["LIMIT", 1]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "category_products" ("category_id", "product_id") VALUES ($1, $2) RETURNING "id"[0m  [["category_id", 1], ["product_id", 43]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "products" ("name", "price", "image_url", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Wireless SoundBar Wooden 24W Portable Mini Sound bar With Remote AUX USB FM Bluetooth Speaker for PC Meeting Yoga Party Outdoor "], ["price", "80.18"], ["image_url", "https://ae01.alicdn.com/kf/HTB1Z2unXODxK1Rjy1zcq6yGeXXa4/Wireless-SoundBar-Wooden-24W-Portable-Mini-Sound-bar-With-Remote-AUX-USB-FM-Bluetooth-Speaker-for.jpg_640x640.jpg"], ["description", "None"], ["created_at", "2019-03-26 21:01:25.777518"], ["updated_at", "2019-03-26 21:01:25.777518"]]
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 44], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "category_products" ("category_id", "product_id") VALUES ($1, $2) RETURNING "id"[0m  [["category_id", 1], ["product_id", 44]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "products" ("name", "price", "image_url", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "S10 Stereo Bluetooth Speaker Support U Disk TF Card Universal Mobile Phone Music Mini Wireless Outdoor Portable Woofer Subwoofer"], ["price", "3.11"], ["image_url", "https://ae01.alicdn.com/kf/HTB1Ya7EatfvK1RjSszhq6AcGFXaV/S10-Stereo-Bluetooth-Speaker-Support-U-Disk-TF-Card-Universal-Mobile-Phone-Music-Mini-Wireless-Outdoor.jpg_640x640.jpg"], ["description", "None"], ["created_at", "2019-03-26 21:01:28.137896"], ["updated_at", "2019-03-26 21:01:28.137896"]]
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 45], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "category_products" ("category_id", "product_id") VALUES ($1, $2) RETURNING "id"[0m  [["category_id", 1], ["product_id", 45]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "products" ("name", "price", "image_url", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "95dB Extra-Loud Telephone Phone Ring Ringing Amplifier Strobe Light Flasher Bell Ringer Sound Telephone Ringer"], ["price", "1.6"], ["image_url", "https://ae01.alicdn.com/kf/HTB1nEW6Ma6qK1RjSZFmq6x0PFXau/95dB-Extra-Loud-Telephone-Phone-Ring-Ringing-Amplifier-Strobe-Light-Flasher-Bell-Ringer-Sound-Telephone-Ringer.jpg_640x640.jpg"], ["description", "None"], ["created_at", "2019-03-26 21:01:28.495441"], ["updated_at", "2019-03-26 21:01:28.495441"]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 46], ["LIMIT", 1]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "category_products" ("category_id", "product_id") VALUES ($1, $2) RETURNING "id"[0m  [["category_id", 1], ["product_id", 46]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "products" ("name", "price", "image_url", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "New Wireless Bluetooth Speaker Plug-in Card Mini Portable Player Speaker Phone Radio Bluetooth Audio"], ["price", "5.42"], ["image_url", "https://ae01.alicdn.com/kf/HLB1hicmaOLxK1Rjy0Ffq6zYdVXaw/New-Wireless-Bluetooth-Speaker-Plug-in-Card-Mini-Portable-Player-Speaker-Phone-Radio-Bluetooth-Audio.jpg_640x640.jpg"], ["description", "None"], ["created_at", "2019-03-26 21:01:30.855637"], ["updated_at", "2019-03-26 21:01:30.855637"]]
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 47], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "category_products" ("category_id", "product_id") VALUES ($1, $2) RETURNING "id"[0m  [["category_id", 1], ["product_id", 47]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "products" ("name", "price", "image_url", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Riding Cycling Multi-function Music Torch Wireless Portable Bluetooth Speaker With Fm Radio Sd Mp3 Charger Power Bank Flashlight"], ["price", "10.67"], ["image_url", "https://ae01.alicdn.com/kf/HTB1gm96OVXXXXa.aVXXq6xXFXXXc/Riding-Cycling-Multi-function-Music-Torch-Wireless-Portable-Bluetooth-Speaker-With-Fm-Radio-Sd-Mp3-Charger.jpg_640x640.jpg"], ["description", "None"], ["created_at", "2019-03-26 21:01:33.013446"], ["updated_at", "2019-03-26 21:01:33.013446"]]
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 48], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "category_products" ("category_id", "product_id") VALUES ($1, $2) RETURNING "id"[0m  [["category_id", 1], ["product_id", 48]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+Started GET "/categories/1" for ::1 at 2019-03-26 17:01:50 -0400
+Started GET "/categories" for ::1 at 2019-03-26 17:01:50 -0400
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by CategoriesController#show as HTML
+  Parameters: {"id"=>"1"}
+Processing by CategoriesController#index as HTML
+  Rendering categories/index.html.erb within layouts/application
+  [1m[36mCategory Load (0.5ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  Rendered categories/index.html.erb within layouts/application (10.5ms)
+Started GET "/categories" for ::1 at 2019-03-26 17:01:50 -0400
+  [1m[36mCategory Load (50.9ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Processing by CategoriesController#index as HTML
+  Rendering categories/show.html.erb within layouts/application
+  Rendering categories/index.html.erb within layouts/application
+  [1m[36mCategory Load (1.0ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  Rendered categories/index.html.erb within layouts/application (18.2ms)
+Completed 200 OK in 413ms (Views: 405.5ms | ActiveRecord: 1.3ms)
+
+
+Completed 200 OK in 235ms (Views: 223.9ms | ActiveRecord: 10.4ms)
+
+
+  [1m[36mProduct Load (1.2ms)[0m  [1m[34mSELECT "products".* FROM "products" INNER JOIN "category_products" ON "products"."id" = "category_products"."product_id" WHERE "category_products"."category_id" = $1[0m  [["category_id", 1]]
+  Rendered categories/show.html.erb within layouts/application (294.3ms)
+Completed 200 OK in 553ms (Views: 362.9ms | ActiveRecord: 71.1ms)
+
+
+Started GET "/categories/1" for ::1 at 2019-03-26 17:01:53 -0400
+Processing by CategoriesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mCategory Load (0.5ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering categories/show.html.erb within layouts/application
+  [1m[36mProduct Load (1.4ms)[0m  [1m[34mSELECT "products".* FROM "products" INNER JOIN "category_products" ON "products"."id" = "category_products"."product_id" WHERE "category_products"."category_id" = $1[0m  [["category_id", 1]]
+  Rendered categories/show.html.erb within layouts/application (7.5ms)
+Completed 200 OK in 57ms (Views: 52.3ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/categories" for ::1 at 2019-03-26 17:02:14 -0400
+Processing by CategoriesController#index as HTML
+  Rendering categories/index.html.erb within layouts/application
+  [1m[36mCategory Load (0.3ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  Rendered categories/index.html.erb within layouts/application (1.8ms)
+Completed 200 OK in 39ms (Views: 37.9ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/categories/1" for ::1 at 2019-03-26 17:02:15 -0400
+Processing by CategoriesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mCategory Load (0.4ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering categories/show.html.erb within layouts/application
+  [1m[36mProduct Load (1.1ms)[0m  [1m[34mSELECT "products".* FROM "products" INNER JOIN "category_products" ON "products"."id" = "category_products"."product_id" WHERE "category_products"."category_id" = $1[0m  [["category_id", 1]]
+  Rendered categories/show.html.erb within layouts/application (6.7ms)
+Completed 200 OK in 74ms (Views: 71.2ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/products/43" for ::1 at 2019-03-26 17:03:05 -0400
+Processing by ProductsController#show as HTML
+  Parameters: {"id"=>"43"}
+  [1m[36mProduct Load (0.5ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 43], ["LIMIT", 1]]
+  Rendering products/show.html.erb within layouts/application
+  Rendered products/show.html.erb within layouts/application (1.1ms)
+Completed 200 OK in 39ms (Views: 34.9ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/categories" for ::1 at 2019-03-26 17:03:11 -0400
+Processing by CategoriesController#index as HTML
+  Rendering categories/index.html.erb within layouts/application
+  [1m[36mCategory Load (0.4ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  Rendered categories/index.html.erb within layouts/application (2.0ms)
+Completed 200 OK in 41ms (Views: 39.1ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/categories/1" for ::1 at 2019-03-26 17:03:12 -0400
+Processing by CategoriesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mCategory Load (0.3ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering categories/show.html.erb within layouts/application
+  [1m[36mProduct Load (0.7ms)[0m  [1m[34mSELECT "products".* FROM "products" INNER JOIN "category_products" ON "products"."id" = "category_products"."product_id" WHERE "category_products"."category_id" = $1[0m  [["category_id", 1]]
+  Rendered categories/show.html.erb within layouts/application (7.0ms)
+Completed 200 OK in 62ms (Views: 58.8ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/products/1" for ::1 at 2019-03-26 17:03:13 -0400
+Processing by ProductsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering products/show.html.erb within layouts/application
+  Rendered products/show.html.erb within layouts/application (1.1ms)
+Completed 200 OK in 38ms (Views: 35.1ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/categories" for ::1 at 2019-03-26 17:03:14 -0400
+Processing by CategoriesController#index as HTML
+  Rendering categories/index.html.erb within layouts/application
+  [1m[36mCategory Load (0.3ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  Rendered categories/index.html.erb within layouts/application (1.9ms)
+Completed 200 OK in 41ms (Views: 39.5ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/categories" for ::1 at 2019-03-26 17:03:15 -0400
+Processing by CategoriesController#index as HTML
+  Rendering categories/index.html.erb within layouts/application
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  Rendered categories/index.html.erb within layouts/application (1.3ms)
+Completed 200 OK in 50ms (Views: 48.6ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/categories/1" for ::1 at 2019-03-26 17:03:16 -0400
+Processing by CategoriesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mCategory Load (0.3ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering categories/show.html.erb within layouts/application
+  [1m[36mProduct Load (0.7ms)[0m  [1m[34mSELECT "products".* FROM "products" INNER JOIN "category_products" ON "products"."id" = "category_products"."product_id" WHERE "category_products"."category_id" = $1[0m  [["category_id", 1]]
+  Rendered categories/show.html.erb within layouts/application (6.3ms)
+Completed 200 OK in 47ms (Views: 44.6ms | ActiveRecord: 1.0ms)
+
+

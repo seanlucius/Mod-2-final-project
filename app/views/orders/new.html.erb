@@ -1,1 +1,35 @@
+<h4>Checkout Page</h4>
 
+<% @cart.each do |p| %>
+<img src=<%= p["image_url"] %> alt="image" height="100" width="100">
+<%= p["name"] %>
+$<%= p["price"].to_f.round(2) %>
+<br>
+<% end %>
+Total Price:
+<% total_price = 0.00 %>
+<% @cart.each do |p| %>
+  <% total_price += p["price"].to_f.round(2) %>
+<% end %>
+$<%= total_price.round(2) %>
+
+  <%= form_for @order do |f| %>
+    <%= f.label :street %>
+    <br>
+    <%= f.text_field :street %>
+    <br>
+    <%= f.label :city %>
+    <br>
+    <%= f.text_field :city %>
+    <br>
+    <%= f.label :state %>
+    <br>
+    <%= f.text_field :state %>
+    <br>
+    <%= f.label :zip %>
+    <br>
+    <%= f.text_field :zip %>
+    <br>
+    <%= f.submit %>
+
+  <% end %>

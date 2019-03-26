@@ -1,6 +1,7 @@
 class CartsController < ApplicationController
 
-  def show
+  def index
+    @cart = cart
   end
 
   def create

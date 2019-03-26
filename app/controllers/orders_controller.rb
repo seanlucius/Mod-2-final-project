@@ -9,15 +9,11 @@ class OrdersController < ApplicationController
    def create
      @order = Order.create(order_params)
 
-     redirect_to add_path
-   end
-
-   def index
-     @cart = cart
+     redirect_to @order
    end
 
   def show
-
+    @order = Order.find(params[:id])
   end
 
 

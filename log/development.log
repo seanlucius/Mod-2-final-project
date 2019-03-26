@@ -14107,3 +14107,289 @@ Processing by OrdersController#new as HTML
 Completed 200 OK in 24ms (Views: 22.4ms | ActiveRecord: 0.0ms)
 
 
+Started GET "/categories" for ::1 at 2019-03-26 13:45:16 -0400
+Processing by CategoriesController#index as HTML
+  Rendering categories/index.html.erb within layouts/application
+  [1m[36mCategory Load (0.9ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  Rendered categories/index.html.erb within layouts/application (5.6ms)
+Completed 200 OK in 25ms (Views: 23.5ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/categories" for ::1 at 2019-03-26 14:00:10 -0400
+Processing by CategoriesController#index as HTML
+  Rendering categories/index.html.erb within layouts/application
+  [1m[36mCategory Load (0.3ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  Rendered categories/index.html.erb within layouts/application (2.4ms)
+Completed 500 Internal Server Error in 36ms (ActiveRecord: 0.3ms)
+
+
+  
+ActionView::Template::Error (File to import not found or unreadable: bootstrap.
+Load paths:
+  /Users/amethyst/code/final_project/Mod-2-final-project/app/assets/config
+  /Users/amethyst/code/final_project/Mod-2-final-project/app/assets/images
+  /Users/amethyst/code/final_project/Mod-2-final-project/app/assets/javascripts
+  /Users/amethyst/code/final_project/Mod-2-final-project/app/assets/stylesheets
+  /Users/amethyst/.rvm/gems/ruby-2.6.1/gems/coffee-rails-4.2.2/lib/assets/javascripts
+  /Users/amethyst/.rvm/gems/ruby-2.6.1/gems/actioncable-5.1.6.2/lib/assets/compiled
+  /Users/amethyst/.rvm/gems/ruby-2.6.1/gems/actionview-5.1.6.2/lib/assets/compiled
+  /Users/amethyst/.rvm/gems/ruby-2.6.1/gems/turbolinks-source-5.2.0/lib/assets/javascripts
+  /Users/amethyst/code/final_project/Mod-2-final-project/node_modules):
+    4:     <title>Project</title>
+    5:     <%= csrf_meta_tags %>
+    6: 
+    7:     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    8:     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    9:   </head>
+   10: 
+  
+app/assets/stylesheets/application.scss:16
+app/views/layouts/application.html.erb:7:in `_app_views_layouts_application_html_erb__4385268685387148734_70161017821340'
+Started GET "/carts" for ::1 at 2019-03-26 14:00:45 -0400
+  [1m[35m (1.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by CartsController#index as HTML
+  Rendering carts/index.html.erb within layouts/application
+  Rendered carts/index.html.erb within layouts/application (1.1ms)
+Started GET "/categories" for ::1 at 2019-03-26 14:00:45 -0400
+Completed 200 OK in 4011ms (Views: 4006.4ms | ActiveRecord: 0.0ms)
+
+
+Processing by CategoriesController#index as HTML
+Started GET "/categoires" for ::1 at 2019-03-26 14:00:49 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/categoires"):
+  
+actionpack (5.1.6.2) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.1.6.2) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.6.2) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.6.2) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.6.2) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.6.2) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.6.2) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.6.2) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.6.2) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.6.2) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.6) lib/rack/method_override.rb:22:in `call'
+rack (2.0.6) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.6.2) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.6.2) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.6.2) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.6) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.6.2) lib/rails/engine.rb:522:in `call'
+puma (3.12.1) lib/puma/configuration.rb:227:in `call'
+puma (3.12.1) lib/puma/server.rb:660:in `handle_request'
+puma (3.12.1) lib/puma/server.rb:474:in `process_client'
+puma (3.12.1) lib/puma/server.rb:334:in `block in run'
+puma (3.12.1) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+  Rendering categories/index.html.erb within layouts/application
+  [1m[36mCategory Load (0.9ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  Rendered categories/index.html.erb within layouts/application (40.3ms)
+Completed 200 OK in 181ms (Views: 57.8ms | ActiveRecord: 19.8ms)
+
+
+Started GET "/categoires" for ::1 at 2019-03-26 14:00:52 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/categoires"):
+  
+actionpack (5.1.6.2) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.1.6.2) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.6.2) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.6.2) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.6.2) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.6.2) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.6.2) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.6.2) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.6.2) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.6.2) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.6) lib/rack/method_override.rb:22:in `call'
+rack (2.0.6) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.6.2) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.6.2) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.6.2) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.6) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.6.2) lib/rails/engine.rb:522:in `call'
+puma (3.12.1) lib/puma/configuration.rb:227:in `call'
+puma (3.12.1) lib/puma/server.rb:660:in `handle_request'
+puma (3.12.1) lib/puma/server.rb:474:in `process_client'
+puma (3.12.1) lib/puma/server.rb:334:in `block in run'
+puma (3.12.1) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started GET "/categories" for ::1 at 2019-03-26 14:00:52 -0400
+Processing by CategoriesController#index as HTML
+  Rendering categories/index.html.erb within layouts/application
+  [1m[36mCategory Load (0.3ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  Rendered categories/index.html.erb within layouts/application (2.1ms)
+Completed 200 OK in 31ms (Views: 29.9ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/categories" for ::1 at 2019-03-26 14:00:53 -0400
+Processing by CategoriesController#index as HTML
+  Rendering categories/index.html.erb within layouts/application
+  [1m[36mCategory Load (0.3ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  Rendered categories/index.html.erb within layouts/application (2.8ms)
+Completed 200 OK in 36ms (Views: 34.9ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/categories/1" for ::1 at 2019-03-26 14:00:59 -0400
+Processing by CategoriesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mCategory Load (0.6ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering categories/show.html.erb within layouts/application
+  [1m[36mProduct Load (1.1ms)[0m  [1m[34mSELECT "products".* FROM "products" INNER JOIN "category_products" ON "products"."id" = "category_products"."product_id" WHERE "category_products"."category_id" = $1[0m  [["category_id", 1]]
+  Rendered categories/show.html.erb within layouts/application (41.6ms)
+Completed 200 OK in 112ms (Views: 97.8ms | ActiveRecord: 9.4ms)
+
+
+Started GET "/products/1" for ::1 at 2019-03-26 14:01:06 -0400
+Processing by ProductsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mProduct Load (0.6ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering products/show.html.erb within layouts/application
+  Rendered products/show.html.erb within layouts/application (1.1ms)
+Completed 200 OK in 38ms (Views: 34.2ms | ActiveRecord: 0.8ms)
+
+
+Started POST "/carts" for ::1 at 2019-03-26 14:01:08 -0400
+Processing by CartsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"ecZra0yYKPOvnmsfFO7eITvp2dufAHoHXZ6An+EQp48ADv4zazH92KYut7OoTetffPNZOTQG+xzaww9p79LBzw==", "id"=>"1", "commit"=>"Add to Cart"}
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Redirected to http://localhost:3000/carts
+Completed 302 Found in 2ms (ActiveRecord: 0.3ms)
+
+
+Started GET "/carts" for ::1 at 2019-03-26 14:01:08 -0400
+Processing by CartsController#index as HTML
+  Rendering carts/index.html.erb within layouts/application
+  Rendered carts/index.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 33ms (Views: 32.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/orders/new" for ::1 at 2019-03-26 14:01:09 -0400
+Processing by OrdersController#new as HTML
+  Rendering orders/new.html.erb within layouts/application
+  Rendered orders/new.html.erb within layouts/application (545.6ms)
+Completed 200 OK in 587ms (Views: 571.6ms | ActiveRecord: 5.1ms)
+
+
+Started POST "/orders" for ::1 at 2019-03-26 14:01:13 -0400
+Processing by OrdersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"+THgoE9FK9VGhVr8Go64pvr1SfEExe7QwEmu42SR4KFEll3eHg8SgXZG6esYp7EcE86YKlchJp0JWk+Br5PtVA==", "order"=>{"street"=>"", "city"=>"", "state"=>"", "zip"=>""}, "commit"=>"Create Order"}
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "orders" ("street", "city", "state", "zip", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["street", ""], ["city", ""], ["state", ""], ["zip", ""], ["created_at", "2019-03-26 18:01:13.211907"], ["updated_at", "2019-03-26 18:01:13.211907"]]
+  [1m[35m (1.2ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/orders/6
+Completed 302 Found in 5ms (ActiveRecord: 2.0ms)
+
+
+Started GET "/orders/6" for ::1 at 2019-03-26 14:01:13 -0400
+Processing by OrdersController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mOrder Load (0.5ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  Rendering orders/show.html.erb within layouts/application
+  Rendered orders/show.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 51ms (Views: 48.7ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/categories" for ::1 at 2019-03-26 14:01:14 -0400
+Processing by CategoriesController#index as HTML
+  Rendering categories/index.html.erb within layouts/application
+  [1m[36mCategory Load (0.4ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  Rendered categories/index.html.erb within layouts/application (3.6ms)
+Completed 200 OK in 38ms (Views: 36.5ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/categories/1" for ::1 at 2019-03-26 14:01:29 -0400
+Processing by CategoriesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mCategory Load (0.3ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering categories/show.html.erb within layouts/application
+  [1m[36mProduct Load (1.2ms)[0m  [1m[34mSELECT "products".* FROM "products" INNER JOIN "category_products" ON "products"."id" = "category_products"."product_id" WHERE "category_products"."category_id" = $1[0m  [["category_id", 1]]
+  Rendered categories/show.html.erb within layouts/application (5.4ms)
+Completed 200 OK in 41ms (Views: 37.5ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/products/1" for ::1 at 2019-03-26 14:01:31 -0400
+Processing by ProductsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mProduct Load (0.4ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering products/show.html.erb within layouts/application
+  Rendered products/show.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 52ms (Views: 49.7ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/categories/1" for ::1 at 2019-03-26 14:01:36 -0400
+Processing by CategoriesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mCategory Load (0.3ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering categories/show.html.erb within layouts/application
+  [1m[36mProduct Load (0.9ms)[0m  [1m[34mSELECT "products".* FROM "products" INNER JOIN "category_products" ON "products"."id" = "category_products"."product_id" WHERE "category_products"."category_id" = $1[0m  [["category_id", 1]]
+  Rendered categories/show.html.erb within layouts/application (5.1ms)
+Completed 200 OK in 46ms (Views: 42.3ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/products/1" for ::1 at 2019-03-26 14:01:36 -0400
+Processing by ProductsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering products/show.html.erb within layouts/application
+  Rendered products/show.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 40ms (Views: 37.7ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/carts" for ::1 at 2019-03-26 14:01:38 -0400
+Processing by CartsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"8Iz+BdLXNT08beMw1wGuK8IG8MywF28zOJJRQ0Mb5v+JRGtd9X7gFjXdP5xroptVhRxwLhsR7ii/z961TdmAvw==", "id"=>"1", "commit"=>"Add to Cart"}
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Redirected to http://localhost:3000/carts
+Completed 302 Found in 2ms (ActiveRecord: 0.3ms)
+
+
+Started GET "/carts" for ::1 at 2019-03-26 14:01:38 -0400
+Processing by CartsController#index as HTML
+  Rendering carts/index.html.erb within layouts/application
+  Rendered carts/index.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 34ms (Views: 33.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/orders/new" for ::1 at 2019-03-26 14:04:06 -0400
+Processing by OrdersController#new as HTML
+  Rendering orders/new.html.erb within layouts/application
+  Rendered orders/new.html.erb within layouts/application (2.8ms)
+Completed 200 OK in 53ms (Views: 51.5ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/orders" for ::1 at 2019-03-26 14:05:36 -0400
+Processing by OrdersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Sta2CwhP21OwFWV3tSsDd2UO4rMbyUbgksJN4Yu5zqn3cQt1WQXiB4DW1mC3AgrNjDUzaEgtjq1b0ayDQLvDXA==", "order"=>{"street"=>"", "city"=>"", "state"=>"", "zip"=>""}, "commit"=>"Create Order"}
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "orders" ("street", "city", "state", "zip", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["street", ""], ["city", ""], ["state", ""], ["zip", ""], ["created_at", "2019-03-26 18:05:36.858065"], ["updated_at", "2019-03-26 18:05:36.858065"]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/orders/7
+Completed 302 Found in 3ms (ActiveRecord: 1.0ms)
+
+
+Started GET "/orders/7" for ::1 at 2019-03-26 14:05:36 -0400
+Processing by OrdersController#show as HTML
+  Parameters: {"id"=>"7"}
+  [1m[36mOrder Load (0.3ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  Rendering orders/show.html.erb within layouts/application
+  Rendered orders/show.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 33ms (Views: 30.7ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/orders/new" for ::1 at 2019-03-26 14:09:34 -0400
+Processing by OrdersController#new as HTML
+  Rendering orders/new.html.erb within layouts/application
+  Rendered orders/new.html.erb within layouts/application (4.7ms)
+Completed 200 OK in 61ms (Views: 59.1ms | ActiveRecord: 0.0ms)
+
+

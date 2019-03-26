@@ -9,17 +9,18 @@ class OrdersController < ApplicationController
    def create
      @order = Order.create(order_params)
 
-     redirect_to :index
+     redirect_to add_path
+   end
+
+   def index
+     @cart = cart
    end
 
   def show
-    @cart = cart
+
   end
 
-  def add
-    add_to_cart
-    redirect_to order_path
-  end
+
 
   private
 

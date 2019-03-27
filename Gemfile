@@ -7,6 +7,7 @@ end
 
 # Add scraping
 gem 'nokogiri'
+gem 'watir'
 # Add BootStrap
 gem 'bootstrap'
 gem 'jquery-rails'

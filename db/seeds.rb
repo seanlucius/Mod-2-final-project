@@ -37,7 +37,7 @@ require 'watir'
 # CategoryProduct.destroy_all
 # Product.destroy_all
 
-def seed_products(product_url, category_name, category_description, category_image_url, category_id)
+def seed_products(product_url, category_name, category_description, category_image_url)
   array = []
   counter = 1
 
@@ -64,10 +64,16 @@ def seed_products(product_url, category_name, category_description, category_ima
       end
       price = array.last.to_f
       array = []
+      image_list = []
       product_page.css('a.ui-image-viewer-thumb-frame', 'img[src]').each do |image|
-        if image.attribute("src").to_s.include? '640'
-          image_url = image.attribute("src").value
+        if !image.attribute("src").nil?
+          if image.attribute("src").value.include? '640'
+            image_list << image.attribute("src").value
+          elsif image.attribute("src").value.include? '50'
+            image_list << image.attribute("src").value.gsub("50", "640")
+          end
         end
+        #elsif image.attribute("src").to_s.include? '50'
       end
       # Get product descroption
       product_page.css("meta[name='description']").each do |description|
@@ -83,17 +89,23 @@ def seed_products(product_url, category_name, category_description, category_ima
       end
       shipping_time = array.last.to_i
       array = []
-      if !item_name.nil? && !price.nil? && !image_url.nil? && !shipping_time.nil? && !product_description.nil? && shipping_time != 0
-        puts counter.to_s + "Product Made"
+      if !item_name.nil? && !price.nil? && !shipping_time.nil? && !product_description.nil? && shipping_time != 0
+        puts counter.to_s + " Products Made"
         counter += 1
-        product = Product.create!(name: item_name, price: price, image_url: image_url, description: product_description, shipping_time: shipping_time)
+        product = Product.create!(name: item_name, price: price, description: product_description, shipping_time: shipping_time)
         CategoryProduct.create!(category_id: category.id, product_id: product.id)
+        image_list.each do |image|
+          Image.create(product_id: product.id, image_url: image)
+        end
       end
   end
 end
 
-seed_products('https://www.aliexpress.com/category/200217534/speakers.html?spm=2114.11010108.105.24.650c649bikSbyM', "Speakers", "Awesome speakers!", "https://cdn.shopify.com/s/files/1/0875/3864/products/S5W_BK_grande.png?v=1551827082", 1)
-# seed_products('https://www.aliexpress.com/category/63705/earphones-headphones.html?spm=2114.search0103.105.23.67be79cdIccaOG', "Headphones", "Super Cool Headphones and Earphones!!!", "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/image/AppleInc/aos/published/images/M/Q5/MQ562/MQ562?wid=2104&hei=2980&fmt=jpeg&qlt=95&op_usm=0.5,0.5&.v=1502831061423", 2)
-# seed_products('https://www.aliexpress.com/category/200010206/smart-watches.html?spm=2114.search0103.105.33.618373c09xm40g', "Smart Watches", "Super Smart!", "https://i5.walmartimages.com/asr/3e11141d-5fad-4a66-a37b-94cfa6243d46_1.a3bfaba9533f2cf74678b9b1e35520df.jpeg?odnHeight=450&odnWidth=450&odnBg=FFFFFF", 3)
-# seed_products('https://www.aliexpress.com/w/wholesale-camera-drone.html?spm=2114.search0103.105.40.6c1b3e70rDPpyq&initiative_id=SC_20180114181349&site=glo&g=y&SearchText=camera+drone&needQuery=n&CatId=200116005&isrefine=y', "Drones", "Wow They even have drones :O", "https://images-na.ssl-images-amazon.com/images/I/51SIhgH8B2L._SX425_.jpg", 4)
-# seed_products('https://www.aliexpress.com/category/702/laptops.html?spm=2114.search0103.104.10.13d33039BWx9Qg', "Laptops", "Powerful Computers", "http://i.dell.com/sites/imagecontent/videos/en/PublishingImages/xps-15-lt-2018.jpg", 5)
+seed_products('https://www.aliexpress.com/category/200002922/habitat-decor.html?site=glo&g=y&needQuery=n', "Reptile Decor", "Give your favorite reptile a naturalistic environment to enjoy", "https://i.pinimg.com/originals/89/23/4e/89234e64d96596c46cb925f994441746.jpg")
+seed_products('https://www.aliexpress.com/category/200002926/terrariums.html?site=glo&g=y&needQuery=n', "Reptile Terrariums", "A wide variety of terrariums, enclosures, kits and housing for your reptile", "http://biobubblepets.com/wp-content/uploads/2016/03/Terrarium-Reptile-Bundle-White-800x800.jpg")
+seed_products('https://www.aliexpress.com/category/200002906/fish-aquatic-supplies.html?site=glo&g=y&needQuery=n', "Aquatic Supplies", "Choosing the right aquarium supplies, accessories and equipment is one of the first steps in setting up a healthy freshwater tank", "https://www.tsunamienterpriseshi.com/images/CA-Microvue-Kit-Small.jpg")
+seed_products('https://www.aliexpress.com/category/200215838/small-animal-supplies.html?site=glo&g=y&needQuery=n', "Dog Supplies", "Shop our collection of dog and puppy supplies, including the latest accessories, toys, crates, collars and more", "https://ae01.alicdn.com/kf/HTB18ldMSFXXXXakaXXXq6xXFXXXv/Pet-Toilet-for-Dogs-Cat-Animals-Lattice-Dog-Toilet-Pet-Shop-Clean-Goods-for-Small-Dogs.jpg_640x640.jpg")
+seed_products('https://www.aliexpress.com/category/200002064/bird-supplies.html?site=glo&g=y&needQuery=n', "Bird Supplies", "Your source for bird supplies. Shop for bird cages, food, stands & other great bird products", "https://www.ultimatepetwebsites.com/wp-content/uploads/2017/07/bird-supplies.jpg")
+seed_products('https://www.aliexpress.com/category/200002893/dog-toys.html?site=glo&g=y&needQuery=n', "Dog Toys", "Generic Description", "https://ae01.alicdn.com/kf/HTB1gAcWXzvuK1Rjy0Faq6x2aVXaQ/ANSINPARK-popular-Dog-toys-very-funny-stuffed-plush-toys-chewing-toy-of-the-durability-chewing-toy.jpg_640x640.jpg")
+seed_products('https://www.aliexpress.com/category/200002071/cat-supplies.html?site=glo&g=y&needQuery=n', "Cat Supplies", "Generic Description", "https://ae01.alicdn.com/kf/HTB1wGWpKkvoK1RjSZFNq6AxMVXas/Free-Shipping-2-color-Cute-Bed-House-Pet-Bed-Soft-Cat-Cuddle-Bed-Lovely-Pet-Supplies.jpg_640x640.jpg")
+seed_products('https://www.aliexpress.com/category/200036008/dog-clothing-shoes.html?site=glo&g=y&needQuery=n', "Dog Clothes", "Generic Description", "https://ae01.alicdn.com/kf/HTB1iIgjX6zuK1Rjy0Fpq6yEpFXaT/Clothes-for-Fleece-Sweater-Golden-Retriever-Husky-Labrador-Big-Dog-Clothes-Winter-Pet-Hoodie-Sportswear-Clothing.jpg_640x640.jpg")

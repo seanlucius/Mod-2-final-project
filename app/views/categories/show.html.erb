@@ -2,7 +2,7 @@
 <ol>
 <% @category.products.each do |p| %>
   <li>
-  <img src=<%= p.image_url %> alt="image" height="100" width="100">
+  <img src=<%= p.images.first[:image_url] %> alt="image" height="100" width="100">
   <%= link_to p.name, p %>
   $<%= p.price.round(2) %>
   </li>

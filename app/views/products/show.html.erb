@@ -5,6 +5,7 @@
   <%= @product.description%>
   <br>
   $<%= @product.price.round(2) %>
+  Shipping Time: <%= @product.shipping_time %>
   <%= form_tag carts_path do %>
     <%= hidden_field_tag :id, @product.id %>
     <%= submit_tag "Add to Cart" %>

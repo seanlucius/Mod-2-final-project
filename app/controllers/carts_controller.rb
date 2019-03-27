@@ -10,4 +10,10 @@ class CartsController < ApplicationController
     redirect_to carts_path
   end
 
+  def remove_item
+    cart.delete_at(cart.find_index(params[:id].to_i))
+    redirect_to carts_path
+  end
+
+
 end

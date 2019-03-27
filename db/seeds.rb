@@ -32,37 +32,49 @@
 require 'open-uri'
 require 'nokogiri'
 
-array = []
-titles = []
+# Category.destroy_all
+# CategoryProduct.destroy_all
+# Product.destroy_all
 
-doc = Nokogiri::HTML(open('https://www.aliexpress.com/category/200217534/speakers.html?spm=2114.11010108.105.24.650c649bikSbyM'))
+def seed_products(product_url, category_name, category_description, category_image_url, category_id)
+  array = []
+  titles = []
 
-# Create category
-Category.create(name: "Speakers", description: "Awesome speakers!", image_url: "https://cdn.shopify.com/s/files/1/0875/3864/products/S5W_BK_grande.png?v=1551827082")
-item_name = nil
-price = nil
-image_url = nil
-doc.css('a.product[title]').each do |a|
-    product_page = Nokogiri::HTML(open('https:' + a.attribute('href')))
-    product_page.css('h1.product-name').each do |p|
-      item_name =  p.content
-    end
-    product_page.css('span.p-price').each do |price|
-        if price.content.include?(' ')
-          array << price.content.split(' ').last
-        else
-          array << price.content
-        end
-    end
-    price = array.last.to_f
-    array = []
-    product_page.css('a.ui-image-viewer-thumb-frame', 'img[src]').each do |image|
-      if image.attribute("src").to_s.include? '640'
-        image_url = image.attribute("src").value
+  doc = Nokogiri::HTML(open(product_url))
+
+  # Create category
+  category = Category.create(name: category_name, description: category_description, image_url: category_image_url)
+  item_name = nil
+  price = nil
+  image_url = nil
+  doc.css('a.product[title]').each do |a|
+      product_page = Nokogiri::HTML(open('https:' + a.attribute('href')))
+      product_page.css('h1.product-name').each do |p|
+        item_name =  p.content
       end
-    end
-    if !item_name.nil? && !price.nil? && !image_url.nil?
-      product = Product.create!(name: item_name, price: price, image_url: image_url, description: "None")
-      CategoryProduct.create!(category_id: 1, product_id: product.id)
-    end
+      product_page.css('span.p-price').each do |price|
+          if price.content.include?(' ')
+            array << price.content.split(' ').last
+          else
+            array << price.content
+          end
+      end
+      price = array.last.to_f
+      array = []
+      product_page.css('a.ui-image-viewer-thumb-frame', 'img[src]').each do |image|
+        if image.attribute("src").to_s.include? '640'
+          image_url = image.attribute("src").value
+        end
+      end
+      if !item_name.nil? && !price.nil? && !image_url.nil?
+        product = Product.create!(name: item_name, price: price, image_url: image_url, description: "None")
+        CategoryProduct.create!(category_id: category.id, product_id: product.id)
+      end
+  end
 end
+
+seed_products('https://www.aliexpress.com/category/200217534/speakers.html?spm=2114.11010108.105.24.650c649bikSbyM', "Speakers", "Awesome speakers!", "https://cdn.shopify.com/s/files/1/0875/3864/products/S5W_BK_grande.png?v=1551827082", 1)
+seed_products('https://www.aliexpress.com/category/63705/earphones-headphones.html?spm=2114.search0103.105.23.67be79cdIccaOG', "Headphones", "Super Cool Headphones and Earphones!!!", "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/image/AppleInc/aos/published/images/M/Q5/MQ562/MQ562?wid=2104&hei=2980&fmt=jpeg&qlt=95&op_usm=0.5,0.5&.v=1502831061423", 2)
+seed_products('https://www.aliexpress.com/category/200010206/smart-watches.html?spm=2114.search0103.105.33.618373c09xm40g', "Smart Watches", "Super Smart!", "https://i5.walmartimages.com/asr/3e11141d-5fad-4a66-a37b-94cfa6243d46_1.a3bfaba9533f2cf74678b9b1e35520df.jpeg?odnHeight=450&odnWidth=450&odnBg=FFFFFF", 3)
+seed_products('https://www.aliexpress.com/w/wholesale-camera-drone.html?spm=2114.search0103.105.40.6c1b3e70rDPpyq&initiative_id=SC_20180114181349&site=glo&g=y&SearchText=camera+drone&needQuery=n&CatId=200116005&isrefine=y', "Drones", "Wow They even have drones :O", "https://images-na.ssl-images-amazon.com/images/I/51SIhgH8B2L._SX425_.jpg", 4)
+seed_products('https://www.aliexpress.com/category/702/laptops.html?spm=2114.search0103.104.10.13d33039BWx9Qg', "Laptops", "Powerful Computers", "http://i.dell.com/sites/imagecontent/videos/en/PublishingImages/xps-15-lt-2018.jpg", 5)

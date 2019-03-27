@@ -1,11 +1,11 @@
 <h4><%= @product.name %></h4>
 
-  <img src=<%= @product.image_url %> alt="image" height="100" width="100">
+  <img src=<%= @product.image_url %> alt="image" height="500" width="500">
   <br>
   <%= @product.description%>
   <br>
   $<%= @product.price.round(2) %>
   <%= form_tag carts_path do %>
-  <%= hidden_field_tag :id, @product.id %>
-  <%= submit_tag "Add to Cart" %>
+    <%= hidden_field_tag :id, @product.id %>
+    <%= submit_tag "Add to Cart" %>
   <% end %>

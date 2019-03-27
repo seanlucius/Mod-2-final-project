@@ -9,6 +9,6 @@ class ApplicationController < ActionController::Base
     # Get the item from the path
     @product = Product.find(params[:id])
     # Load the cart from the session, or create a new empty cart.
-    cart << @product
+    cart << @product.id
   end
 end

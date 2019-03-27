@@ -1,8 +1,8 @@
 <h4><%= @product.name %></h4>
-
-  <img src=<%= @product.image_url %> alt="image" height="500" width="500">
-  <br>
-  <%= @product.description%>
+  <% @product.images.each do |i| %>
+    <img src=<%= i[:image_url] %> alt="image" height="500" width="500">
+  <% end %>
+  <% @product.description%>
   <br>
   $<%= @product.price.round(2) %>
   Shipping Time: <%= @product.shipping_time %>

@@ -1,7 +1,7 @@
 <h4>Checkout Page</h4>
 <% @cart.each do |product_id| %>
   <% p = Product.find(product_id) %>
-  <img src=<%= p[:image_url] %> alt="image" height="100" width="100">
+  <img src=<%= p.images.first[:image_url] %> alt="image" height="100" width="100">
   <%= p[:name] %>
   $<%= p[:price].to_f.round(2) %>
   <br>

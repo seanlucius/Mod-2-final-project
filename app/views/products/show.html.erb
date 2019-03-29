@@ -1,12 +1,16 @@
-<h4><%= @product.name %></h4>
+<h2><%= @product.name %></h2>
+<center>
   <% @product.images.each do |i| %>
-    <img src=<%= i[:image_url] %> alt="image" height="500" width="500">
+    <img src=<%= i[:image_url] %> alt="image" height="200" width="200" class="img-thumbnail">
   <% end %>
+  </center>
   <% @product.description%>
   <br>
-  $<%= @product.price.round(2) %>
-  Shipping Time: <%= @product.shipping_time %>
+  <p style="font-size: 30px;">
+  <b>Price:</b> $<%= @product.price.round(2) %>
+  <br>
+  <b>Shipping Time:</b> <%= @product.shipping_time %> days</p>
   <%= form_tag carts_path do %>
     <%= hidden_field_tag :id, @product.id %>
-    <%= submit_tag "Add to Cart" %>
+    <%= button_tag "Add to Cart", class: 'btn btn-primary'%>
   <% end %>

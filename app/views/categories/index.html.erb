@@ -1,10 +1,12 @@
-<h4>Categories</h4>
-<ol>
-<% @categories.each do |c| %>
-  <li>
-  <img src=<%= c.image_url %> alt="image" height="100" width="100">
-  <%= link_to c.name, c %>
-  <%= c.description %>
-  </li>
-<% end %>
-</ol>
+<center><h2>Categories</h2></center>
+
+</ul>
+<div class="list-group">
+  <% @categories.each do |c| %>
+  <a href=<%= category_path(c.id) %> class="list-group-item list-group-item-action">
+    <img src=<%= c.image_url %> class="mr-3" height="100" width="100">
+    <b style='font-size:30px;padding-left:60px;'><%=c.name %></b>
+     <span class="badge badge-primary badge-pill"><%= c.products.count %></span>
+  </a>
+  <% end %>
+</div>

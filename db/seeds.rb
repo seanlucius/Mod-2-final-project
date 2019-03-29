@@ -38,6 +38,7 @@ require 'watir'
 # Product.destroy_all
 
 def seed_products(product_url, category_name, category_description, category_image_url)
+  number = rand(10...17)
   array = []
   counter = 1
 
@@ -45,15 +46,19 @@ def seed_products(product_url, category_name, category_description, category_ima
 
   # Create category
   category = Category.create(name: category_name, description: category_description, image_url: category_image_url)
-  item_name = nil
-  price = nil
-  image_url = nil
-  shipping_time = nil
-  product_description = nil
+
   doc.css('a.product[title]').each do |a|
+      if counter > number
+        break
+      end
+      item_name = nil
+      price = nil
+      image_url = nil
+      shipping_time = nil
+      product_description = nil
       product_page = Nokogiri::HTML(open('https:' + a.attribute('href')))
       product_page.css('h1.product-name').each do |p|
-        item_name =  p.content
+        item_name =  p.content.split(" ")[0..5].join(" ")
       end
       product_page.css('span.p-price').each do |price|
           if price.content.include?(' ')
@@ -94,6 +99,7 @@ def seed_products(product_url, category_name, category_description, category_ima
         counter += 1
         product = Product.create!(name: item_name, price: price, description: product_description, shipping_time: shipping_time)
         CategoryProduct.create!(category_id: category.id, product_id: product.id)
+        image_list = image_list.uniq
         image_list.each do |image|
           Image.create(product_id: product.id, image_url: image)
         end

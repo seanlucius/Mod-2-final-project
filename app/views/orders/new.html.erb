@@ -1,4 +1,4 @@
-<h4>Checkout Page</h4>
+<h2>Checkout Page</h2>
 <% @cart.each do |product_id| %>
   <% p = Product.find(product_id) %>
   <img src=<%= p.images.first[:image_url] %> alt="image" height="100" width="100">
@@ -31,6 +31,6 @@ $<%= total_price.round(2) %>
     <br>
     <%= f.text_field :zip %>
     <br>
-    <%= f.submit %>
+    <%= f.button %>
 
   <% end %>

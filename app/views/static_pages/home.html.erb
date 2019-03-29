@@ -1,12 +1,18 @@
+<center>
 <div class="center jumbotron">
-  <h1>Welcome to Buying Shit App!</h1>
-  <br>
-  <br>
+<h1>Welcome to Pet Store</h1>
   <br>
   <% if !logged_in? %>
   <%= link_to "Log in", login_path, class: "btn btn-lg btn-primary" %>
-  <br>
-  <br>
   <%= link_to "New user", signup_path, class: "btn btn-lg btn-primary" %>
   <% end %>
 </div>
+
+<h2>Best Sellers</h2>
+<% @images = Image.all %>
+<% @images = @images.shuffle[0..14] %>
+<% @images.each do |i| %>
+<img src=<%= i[:image_url] %> alt="image" height="200" width="200" class="img-thumbnail">
+<% end %>
+
+</center>

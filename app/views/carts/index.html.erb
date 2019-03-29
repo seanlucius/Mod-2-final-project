@@ -1,4 +1,4 @@
-<h4>Your Cart</h4>
+<center><h2>Your Cart</h2></center>
 <% @cart.each do |product_id| %>
   <% p = Product.find(product_id) %>
   <img src=<%= p.images.first[:image_url] %> height="100" width="100">

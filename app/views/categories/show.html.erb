@@ -1,10 +1,11 @@
-<h4><%= @category.name %></h4>
-<ol>
-<% @category.products.each do |p| %>
-  <li>
-  <img src=<%= p.images.first[:image_url] %> alt="image" height="100" width="100">
-  <%= link_to p.name, p %>
-  $<%= p.price.round(2) %>
-  </li>
-<% end %>
-</ol>
+<center><h2><%= @category.name %></h2></center>
+</ul>
+<div class="list-group">
+  <% @category.products.each do |c| %>
+  <a href=<%= product_path(c.id) %> class="list-group-item list-group-item-action">
+    <img src=<%= c.images.first[:image_url] %> class="mr-3" height="100" width="100">
+    <b style='font-size:15px;padding-left:60px;'><%=c.name %></b>
+    <b style='font-size:15px;padding-left:60px;'>$ <%=c.price.round(2) %></b>
+  </a>
+  <% end %>
+</div>
